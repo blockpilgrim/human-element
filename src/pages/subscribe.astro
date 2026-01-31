@@ -1,0 +1,22 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SubscribeForm from '../components/SubscribeForm.astro';
+---
+
+<PageLayout title="Subscribe — The Daily Sublime" description="Receive The Daily Sublime in your inbox every morning, or follow via RSS.">
+  <h1>Subscribe</h1>
+
+  <p>Receive The Daily Sublime in your inbox every morning, or follow via RSS. Free. One email per day. Unsubscribe anytime.</p>
+
+  <h2>Email</h2>
+
+  <SubscribeForm />
+
+  <h2>RSS</h2>
+
+  <p>Prefer a feed reader? Subscribe via RSS:</p>
+
+  <a href="/rss.xml" class="rss-link">RSS Feed</a>
+
+  <p class="subscribe-privacy" style="margin-top: var(--space-3);">Copy this link into your preferred feed reader (Feedly, NetNewsWire, Miniflux, etc.)</p>
+</PageLayout>

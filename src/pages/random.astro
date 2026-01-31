@@ -1,0 +1,8 @@
+---
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('entries', ({ data }) => !data.draft);
+const random = entries[Math.floor(Math.random() * entries.length)];
+
+return Astro.redirect(`/entry/${random.id}`, 302);
+---

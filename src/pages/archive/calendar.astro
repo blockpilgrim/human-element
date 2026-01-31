@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CalendarGrid from '../../components/CalendarGrid.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('entries', ({ data }) => !data.draft);
+
+const entryDates = new Set(
+  allEntries.map((e) => e.data.date.toISOString().split('T')[0])
+);
+
+// Determine range of months to display
+const dates = allEntries
+  .map((e) => e.data.date)
+  .sort((a, b) => a.getTime() - b.getTime());
+
+const months: { year: number; month: number }[] = [];
+
+if (dates.length > 0) {
+  const first = dates[0];
+  const last = dates[dates.length - 1];
+  let y = last.getUTCFullYear();
+  let m = last.getUTCMonth();
+  const firstY = first.getUTCFullYear();
+  const firstM = first.getUTCMonth();
+
+  // Iterate from most recent to oldest
+  while (y > firstY || (y === firstY && m >= firstM)) {
+    months.push({ year: y, month: m });
+    m--;
+    if (m < 0) {
+      m = 11;
+      y--;
+    }
+  }
+}
+---
+
+<BaseLayout title="Calendar — The Daily Sublime">
+  <h1 class="archive-heading">Calendar</h1>
+
+  <nav class="archive-view-toggle" aria-label="Archive view">
+    <a href="/archive">List</a>
+    <span aria-current="page">Calendar</span>
+  </nav>
+
+  {months.map(({ year, month }) => (
+    <CalendarGrid year={year} month={month} entryDates={entryDates} />
+  ))}
+</BaseLayout>

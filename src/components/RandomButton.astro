@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('entries', ({ data }) => !data.draft);
+const slugs = entries.map((e) => e.id);
+---
+
+<a href="/random" class="random-button" id="random-btn" data-slugs={JSON.stringify(slugs)}>
+  Random entry
+</a>
+
+<script>
+  const btn = document.getElementById('random-btn');
+  if (btn) {
+    const slugs: string[] = JSON.parse(btn.dataset.slugs || '[]');
+    btn.addEventListener('click', (e) => {
+      if (slugs.length > 0) {
+        e.preventDefault();
+        const slug = slugs[Math.floor(Math.random() * slugs.length)];
+        window.location.href = `/entry/${slug}`;
+      }
+    });
+  }
+</script>

@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('entries', ({ data }) => !data.draft);
+
+// Count tags
+const tagCounts = new Map<string, number>();
+for (const entry of allEntries) {
+  for (const tag of entry.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  }
+}
+
+// Sort alphabetically
+const sortedTags = [...tagCounts.entries()].sort((a, b) =>
+  a[0].localeCompare(b[0])
+);
+---
+
+<BaseLayout title="Themes — The Daily Sublime">
+  <h1 class="page-title">Themes</h1>
+
+  <ul class="tag-list" style="gap: var(--space-3);">
+    {sortedTags.map(([tag, count]) => (
+      <li>
+        <a href={`/tags/${tag}`}>{tag} <span style="opacity: 0.6;">({count})</span></a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

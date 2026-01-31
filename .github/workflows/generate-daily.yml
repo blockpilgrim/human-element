@@ -1,0 +1,54 @@
+name: Generate Daily Entry
+
+on:
+  schedule:
+    # Run at midnight UTC every day
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install generation dependencies
+        run: npm install @anthropic-ai/sdk
+        working-directory: ./scripts
+
+      - name: Generate today's entry
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-entry.mjs
+
+      - name: Validate generated file
+        run: |
+          TODAY=$(date -u +"%Y-%m-%d")
+          FILE="src/content/entries/${TODAY}.md"
+          if [ ! -f "$FILE" ]; then
+            echo "ERROR: Expected file $FILE was not created"
+            exit 1
+          fi
+          echo "Generated: $FILE"
+          head -30 "$FILE"
+
+      - name: Commit and push
+        run: |
+          git config user.name "Daily Sublime Bot"
+          git config user.email "bot@thedailysublime.com"
+          TODAY=$(date -u +"%Y-%m-%d")
+          git add "src/content/entries/${TODAY}.md"
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Add entry for ${TODAY}"
+          git push

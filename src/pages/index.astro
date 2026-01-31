@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EntryCard from '../components/EntryCard.astro';
+import RandomButton from '../components/RandomButton.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('entries', ({ data }) => !data.draft);
+const sorted = allEntries.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const entry = sorted[0];
+
+const description = entry
+  ? `"${entry.data.passage.trim().slice(0, 120)}..." — ${entry.data.author}`
+  : undefined;
+---
+
+<BaseLayout title="The Daily Sublime" description={description}>
+  {entry && <EntryCard entry={entry} isHomepage={true} />}
+
+  <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
+    <a href={`/entry/${entry.id}`} class="random-button">Permalink</a>
+    <RandomButton />
+  </div>
+</BaseLayout>

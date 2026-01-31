@@ -1,0 +1,49 @@
+---
+import TagList from './TagList.astro';
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'entries'>;
+  isHomepage?: boolean;
+}
+
+const { entry, isHomepage = false } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const dateFormatted = data.date.toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<article class="entry-card">
+  <time class="entry-date" datetime={data.date.toISOString().split('T')[0]}>
+    {dateFormatted}
+  </time>
+
+  {!isHomepage && (
+    <h1 class="entry-title">{data.title}</h1>
+  )}
+
+  {isHomepage && (
+    <h2 class="entry-title">{data.title}</h2>
+  )}
+
+  <blockquote class="entry-passage">
+    {data.passage.trim()}
+  </blockquote>
+
+  <p class="entry-attribution">
+    <span class="author">{data.author}</span>, <cite>{data.source}</cite>{data.sourceYear ? ` (${data.sourceYear})` : ''}
+  </p>
+
+  <div class="entry-commentary">
+    <Content />
+  </div>
+
+  <TagList tags={data.tags} />
+</article>

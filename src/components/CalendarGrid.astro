@@ -1,0 +1,92 @@
+---
+interface Props {
+  year: number;
+  month: number;
+  entryDates: Set<string>;
+}
+
+const { year, month, entryDates } = Astro.props;
+
+const today = new Date().toISOString().split('T')[0];
+const monthName = new Date(year, month).toLocaleDateString('en-US', {
+  month: 'long',
+  year: 'numeric',
+});
+
+const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+// Build calendar grid
+const firstDay = new Date(year, month, 1).getDay();
+const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+const weeks: (number | null)[][] = [];
+let currentWeek: (number | null)[] = [];
+
+// Leading empty cells
+for (let i = 0; i < firstDay; i++) {
+  currentWeek.push(null);
+}
+
+for (let day = 1; day <= daysInMonth; day++) {
+  currentWeek.push(day);
+  if (currentWeek.length === 7) {
+    weeks.push(currentWeek);
+    currentWeek = [];
+  }
+}
+
+// Trailing empty cells
+if (currentWeek.length > 0) {
+  while (currentWeek.length < 7) {
+    currentWeek.push(null);
+  }
+  weeks.push(currentWeek);
+}
+
+function dateStr(day: number): string {
+  const m = String(month + 1).padStart(2, '0');
+  const d = String(day).padStart(2, '0');
+  return `${year}-${m}-${d}`;
+}
+---
+
+<div class="calendar-month">
+  <h2 class="calendar-month-title">{monthName}</h2>
+  <table class="calendar-grid" role="grid" aria-label={monthName}>
+    <thead>
+      <tr>
+        {dayNames.map((name) => (
+          <th scope="col">{name}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {weeks.map((week) => (
+        <tr>
+          {week.map((day) => {
+            if (day === null) {
+              return <td></td>;
+            }
+            const ds = dateStr(day);
+            const hasEntry = entryDates.has(ds);
+            const isToday = ds === today;
+            const classes = [
+              hasEntry ? 'has-entry' : 'empty-day',
+              isToday ? 'is-today' : '',
+            ].filter(Boolean).join(' ');
+
+            return (
+              <td class={classes}>
+                {hasEntry ? (
+                  <a href={`/entry/${ds}`}>{day}</a>
+                ) : (
+                  day
+                )}
+              </td>
+            );
+          })}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

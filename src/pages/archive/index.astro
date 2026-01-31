@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryPreview from '../../components/EntryPreview.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('entries', ({ data }) => !data.draft);
+const sorted = allEntries.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Group by month
+const grouped = new Map<string, typeof sorted>();
+for (const entry of sorted) {
+  const key = entry.data.date.toISOString().slice(0, 7);
+  if (!grouped.has(key)) grouped.set(key, []);
+  grouped.get(key)!.push(entry);
+}
+
+function formatMonth(key: string): string {
+  const [year, month] = key.split('-');
+  const date = new Date(Number(year), Number(month) - 1);
+  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout title="Archive — The Daily Sublime">
+  <h1 class="archive-heading">Archive</h1>
+
+  <nav class="archive-view-toggle" aria-label="Archive view">
+    <span aria-current="page">List</span>
+    <a href="/archive/calendar">Calendar</a>
+  </nav>
+
+  {[...grouped.entries()].map(([month, entries]) => (
+    <section>
+      <h2 class="archive-month-heading">{formatMonth(month)}</h2>
+      <ul class="entry-list" role="list">
+        {entries.map((entry) => (
+          <li><EntryPreview entry={entry} /></li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>

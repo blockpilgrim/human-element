@@ -1,0 +1,20 @@
+{
+  "name": "daily-sublime",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "generate": "node scripts/generate-entry.mjs"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/source-serif-4": "^5.2.9",
+    "astro": "^5.17.1",
+    "markdown-it": "^14.1.0",
+    "sanitize-html": "^2.17.0"
+  }
+}

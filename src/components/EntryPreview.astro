@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'entries'>;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+
+const dateFormatted = data.date.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+
+const passageExcerpt = data.passage.trim().split('\n')[0].slice(0, 100);
+---
+
+<div class="entry-preview">
+  <a href={`/entry/${entry.id}`}>
+    <span class="preview-date">{dateFormatted}</span>
+    <span class="preview-title">{data.title}</span>
+    <span class="preview-meta">{data.author}, <cite>{data.source}</cite></span>
+    <span class="preview-excerpt">{passageExcerpt}{passageExcerpt.length >= 100 ? '...' : ''}</span>
+  </a>
+</div>
