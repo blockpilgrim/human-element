@@ -111,7 +111,7 @@ Your commentary here as Markdown prose. Two to four paragraphs.
 Do not use headers or bullet points in the commentary.`;
 
 const message = await client.messages.create({
-  model: 'claude-sonnet-4-5-20250514',
+  model: 'claude-sonnet-4-5-20250929',
   max_tokens: 1500,
   temperature: 0.9,
   messages: [
