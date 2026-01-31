@@ -255,6 +255,10 @@ a:hover {
   font-weight: 500;
 }
 
+.entry-excerpt-note {
+  font-style: italic;
+}
+
 /* === Entry: Commentary === */
 .entry-commentary {
   margin-bottom: var(--space-8);

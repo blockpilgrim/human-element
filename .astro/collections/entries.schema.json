@@ -35,6 +35,14 @@
         "sourceYear": {
           "type": "number"
         },
+        "excerpt": {
+          "type": "boolean",
+          "default": false
+        },
+        "passageLink": {
+          "type": "string",
+          "format": "uri"
+        },
         "tags": {
           "type": "array",
           "items": {

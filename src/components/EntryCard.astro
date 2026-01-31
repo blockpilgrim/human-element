@@ -39,6 +39,12 @@ const dateFormatted = data.date.toLocaleDateString('en-US', {
 
   <p class="entry-attribution">
     <span class="author">{data.author}</span>, <cite>{data.source}</cite>{data.sourceYear ? ` (${data.sourceYear})` : ''}
+    {data.excerpt && data.passageLink && (
+      <span class="entry-excerpt-note"> · <a href={data.passageLink} rel="noopener noreferrer">Read the full text</a></span>
+    )}
+    {data.excerpt && !data.passageLink && (
+      <span class="entry-excerpt-note"> · Excerpt</span>
+    )}
   </p>
 
   <div class="entry-commentary">

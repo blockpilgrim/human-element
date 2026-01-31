@@ -60,10 +60,15 @@ const systemPrompt = `You are the editor of "The Daily Sublime," a daily secular
 ## Guidelines for passage selection:
 - Draw from: philosophy, literature, poetry, religious texts (treated as literature), speeches, essays, letters, and song lyrics
 - Span cultures, centuries, and traditions: ${sources.traditions.join(', ')}
-- Passages should be 1-8 lines of poetry, or 1-5 sentences of prose
 - They should carry emotional or intellectual weight suitable for quiet morning reflection
 - They should be accessible to a general reader without specialized knowledge
 - You may draw from these authors (but are not limited to them): ${sources.suggested_authors.join(', ')}
+
+## Copyright and excerpt rules:
+- For PUBLIC DOMAIN works (generally published before 1929, or by authors who died 70+ years ago): include the FULL poem or complete passage. Do not excerpt public domain poems — use the whole text.
+- For COPYRIGHTED works (modern authors, post-1929): use a short excerpt only (a few key lines or sentences that fall within fair use). Set "excerpt: true" in the frontmatter.
+- When using an excerpt, the commentary MUST acknowledge it is an excerpt (e.g., "The poem opens with..." or "In these lines from..."). Do not write about the passage as if it were the complete work.
+- When using an excerpt, try to find a legitimate URL where the full text can be read (e.g., Poetry Foundation, Academy of American Poets, a publisher's page, or the author's official site). If you can identify a plausible URL, include it as "passageLink" in the frontmatter. If you are not confident in the URL, omit passageLink entirely — do not guess.
 
 ## Guidelines for commentary:
 - 200-400 words in 2-4 paragraphs
@@ -100,6 +105,8 @@ passage: |
 author: "Author Full Name"
 source: "Title of Work"
 sourceYear: YYYY
+excerpt: false
+passageLink: "https://example.com/full-text"
 tags:
   - tag1
   - tag2
@@ -108,10 +115,15 @@ draft: false
 ---
 
 Your commentary here as Markdown prose. Two to four paragraphs.
-Do not use headers or bullet points in the commentary.`;
+Do not use headers or bullet points in the commentary.
+
+IMPORTANT notes on the frontmatter:
+- Set "excerpt: true" ONLY when the passage is a copyrighted excerpt (not the full text). Set "excerpt: false" for public domain works where you included the full text.
+- Include "passageLink" ONLY when excerpt is true AND you can identify a legitimate URL for the full text. Omit the passageLink line entirely if excerpt is false or if you cannot confidently identify a URL.`;
 
 const message = await client.messages.create({
-  model: 'claude-sonnet-4-5-20250929',
+  // model: 'claude-sonnet-4-5-20250929',
+  model: 'claude-opus-4-5-20251101',
   max_tokens: 1500,
   temperature: 0.9,
   messages: [

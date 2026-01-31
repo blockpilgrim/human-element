@@ -10,6 +10,8 @@ const entries = defineCollection({
     author: z.string(),
     source: z.string(),
     sourceYear: z.number().optional(),
+    excerpt: z.boolean().default(false),
+    passageLink: z.string().url().optional(),
     tags: z.array(z.string()).min(1).max(5),
     draft: z.boolean().default(false),
   }),
