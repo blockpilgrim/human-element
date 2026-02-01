@@ -22,11 +22,11 @@ Built with Astro, automated with GitHub Actions + LLM API (currently Kimi K2.5 v
 
 ```
 GitHub Actions (daily cron, midnight UTC)
-  → calls LLM API (Kimi K2.5 via OpenRouter) via scripts/generate-entry.mjs
-  → commits new markdown file to src/content/entries/
-  → pushes to GitHub
+  → publishes any due draft entries (scripts/publish-entries.mjs)
+  → generates next day's entry as draft (scripts/generate-entry.mjs)
+  → commits changes and pushes to GitHub
   → Netlify detects push, rebuilds static site
-  → RSS feed updates
+  → RSS feed updates (only published entries)
   → Buttondown detects RSS update, sends email to subscribers
 ```
 
@@ -55,6 +55,7 @@ daily-sublime/
 │   └── favicon.svg
 ├── scripts/
 │   ├── generate-entry.mjs      # Generation script (OpenRouter / Kimi K2.5)
+│   ├── publish-entries.mjs     # Publishes draft entries whose date has arrived
 │   └── sources.json            # Curated author/theme reference
 ├── src/
 │   ├── content/
@@ -110,22 +111,33 @@ npm install
 ### Commands
 
 ```bash
-npm run dev       # Start dev server (http://localhost:4321)
-npm run build     # Build static site to dist/
-npm run preview   # Preview the built site locally
-npm run generate  # Generate today's entry (requires OPENROUTER_API_KEY)
+npm run dev              # Start dev server (http://localhost:4321)
+npm run build            # Build static site to dist/
+npm run preview          # Preview the built site locally
+npm run generate         # Generate next entry as draft (requires OPENROUTER_API_KEY)
+npm run generate -- --count 3  # Generate multiple upcoming entries
+npm run publish:entries  # Publish draft entries whose date has arrived
 ```
 
-### Generating an entry locally
+### Generating entries locally
 
 ```bash
 export OPENROUTER_API_KEY=sk-or-...
-npm run generate
+npm run generate              # Generate one entry
+npm run generate -- --count 5 # Generate five entries
 ```
 
-This creates a new file at `src/content/entries/YYYY-MM-DD.md` for today's date. If an entry already exists for today, it exits without changes.
+Each run creates a new entry dated one day after the latest existing entry, with `draft: true`. Run it multiple times (or use `--count`) to build up a buffer of staged entries for review.
 
-The script reads the last 14 entries to avoid repeating authors and themes.
+To publish entries whose date has arrived:
+
+```bash
+npm run publish:entries
+```
+
+This flips `draft: true` → `draft: false` for any entry where the date is today or earlier. Draft entries are hidden from the site, RSS feed, and all public pages.
+
+The generation script reads the last 14 entries to avoid repeating authors and themes.
 
 ### Writing an entry by hand
 
@@ -185,8 +197,8 @@ These are not yet implemented but are natural next steps:
 - **Comments** — [Giscus](https://giscus.app) (GitHub Discussions-backed, free) for anonymous per-entry discussion
 - **Search** — [Pagefind](https://pagefind.app) for static full-text search at zero runtime cost
 - **Author index** — Browse entries by source author
-- **Approval workflow** — Have the GitHub Action create a draft PR instead of auto-committing, so you can review before publishing
-- **Batch generation** — Generate a week of entries at once for review
+- ~~**Approval workflow** — Have the GitHub Action create a draft PR instead of auto-committing, so you can review before publishing~~ (implemented via draft staging)
+- ~~**Batch generation** — Generate a week of entries at once for review~~ (implemented via `--count` flag)
 - **Analytics** — [Plausible](https://plausible.io) or [Fathom](https://usefathom.com) for privacy-respecting analytics
 - **Dark mode** — ~~CSS `prefers-color-scheme` media query with inverted warm tones~~ (implemented)
 

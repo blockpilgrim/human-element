@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "generate": "node scripts/generate-entry.mjs"
+    "generate": "node scripts/generate-entry.mjs",
+    "publish:entries": "node scripts/publish-entries.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.72.1",

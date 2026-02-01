@@ -12,29 +12,47 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ENTRIES_DIR = join(__dirname, '..', 'src', 'content', 'entries');
 const SOURCES_FILE = join(__dirname, 'sources.json');
 
-// ---------------------------------------------------------------------------
-// 1. Determine today's date and check if entry already exists
-// ---------------------------------------------------------------------------
-const today = new Date().toISOString().split('T')[0];
-const outputPath = join(ENTRIES_DIR, `${today}.md`);
-
-if (existsSync(outputPath)) {
-  console.log(`Entry for ${today} already exists. Skipping.`);
-  process.exit(0);
-}
+// Parse --count flag (default: 1)
+const countFlagIndex = process.argv.indexOf('--count');
+const COUNT = countFlagIndex !== -1 ? parseInt(process.argv[countFlagIndex + 1], 10) || 1 : 1;
 
 // Ensure entries directory exists
 if (!existsSync(ENTRIES_DIR)) {
   mkdirSync(ENTRIES_DIR, { recursive: true });
 }
 
+for (let i = 0; i < COUNT; i++) {
+  if (COUNT > 1) console.log(`\n--- Generating entry ${i + 1} of ${COUNT} ---`);
+
+// ---------------------------------------------------------------------------
+// 1. Determine next entry date (day after the latest existing entry)
+// ---------------------------------------------------------------------------
+const allEntryFiles = readdirSync(ENTRIES_DIR)
+  .filter((f) => /^\d{4}-\d{2}-\d{2}\.md$/.test(f))
+  .sort();
+
+let targetDate;
+if (allEntryFiles.length === 0) {
+  targetDate = new Date().toISOString().split('T')[0];
+} else {
+  const latestFile = allEntryFiles[allEntryFiles.length - 1];
+  const latestDateStr = latestFile.replace('.md', '');
+  const nextDate = new Date(latestDateStr + 'T00:00:00Z');
+  nextDate.setUTCDate(nextDate.getUTCDate() + 1);
+  targetDate = nextDate.toISOString().split('T')[0];
+}
+
+const outputPath = join(ENTRIES_DIR, `${targetDate}.md`);
+
+if (existsSync(outputPath)) {
+  console.log(`Entry for ${targetDate} already exists. Skipping.`);
+  process.exit(0);
+}
+
 // ---------------------------------------------------------------------------
 // 2. Load recent entries to avoid repetition
 // ---------------------------------------------------------------------------
-const existingFiles = readdirSync(ENTRIES_DIR)
-  .filter((f) => f.endsWith('.md'))
-  .sort()
-  .slice(-14);
+const existingFiles = allEntryFiles.slice(-14);
 
 const recentAuthors = [];
 const recentTags = [];
@@ -111,7 +129,7 @@ Return ONLY valid YAML frontmatter + Markdown body. No code fences. No explanati
 
 ---
 title: "Short Evocative Title"
-date: ${today}
+date: ${targetDate}
 passage: |
   The quoted passage here,
   preserving line breaks for poetry.
@@ -124,7 +142,7 @@ tags:
   - tag1
   - tag2
   - tag3
-draft: false
+draft: true
 ---
 
 Your commentary here as Markdown prose. Two to four paragraphs.
@@ -143,7 +161,7 @@ IMPORTANT notes on the frontmatter:
 //   messages: [
 //     {
 //       role: 'user',
-//       content: `Generate today's entry for The Daily Sublime (${today}). Select a meaningful passage and write a thoughtful commentary.`,
+//       content: `Generate an entry for The Daily Sublime for ${targetDate}. Select a meaningful passage and write a thoughtful commentary.`,
 //     },
 //   ],
 //   system: systemPrompt,
@@ -160,7 +178,7 @@ const message = await client.chat.completions.create({
     { role: 'system', content: systemPrompt },
     {
       role: 'user',
-      content: `Generate today's entry for The Daily Sublime (${today}). Select a meaningful passage and write a thoughtful commentary.`,
+      content: `Generate an entry for The Daily Sublime for ${targetDate}. Select a meaningful passage and write a thoughtful commentary.`,
     },
   ],
 }, { timeout: 180_000 }); // 3 minute timeout
@@ -239,3 +257,5 @@ writeFileSync(outputPath, output + '\n', 'utf-8');
 console.log(`Successfully generated: ${outputPath}`);
 console.log(`Author: ${frontmatter.match(/^author:\s*"?(.+?)"?\s*$/m)?.[1] || 'unknown'}`);
 console.log(`Body: ${body.length} characters`);
+
+} // end for loop (--count)
