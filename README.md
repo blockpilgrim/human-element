@@ -1,6 +1,6 @@
-# The Daily Sublime
+# The Human Element
 
-A daily secular devotional — one passage from literature, poetry, or philosophy, paired with a thoughtful AI-generated reflection. Every morning. No dogma, no accounts, no ads.
+Daily wisdom for creative humans in the age of AI — one passage from literature, philosophy, or contemporary thought, paired with a meditative AI-generated reflection. Every morning. No accounts, no ads.
 
 Built with Astro, automated with GitHub Actions + LLM API (currently Kimi K2.5 via OpenRouter), deployed on Netlify.
 
@@ -48,7 +48,7 @@ No database. No server. Just Git + APIs + static hosting.
 ### Project structure
 
 ```
-daily-sublime/
+human-element/
 ├── .github/workflows/
 │   └── generate-daily.yml      # Daily cron → LLM API → commit
 ├── public/
@@ -150,18 +150,18 @@ Create a file at `src/content/entries/YYYY-MM-DD.md` following the frontmatter s
 ```bash
 git add -A
 git commit -m "Initial commit"
-git remote add origin git@github.com:YOUR_USERNAME/daily-sublime.git
+git remote add origin git@github.com:YOUR_USERNAME/human-element.git
 git push -u origin main
 ```
 
 ### 2. Connect to Netlify
 
 1. Go to [app.netlify.com](https://app.netlify.com) and sign in with GitHub
-2. Click "Add new site" → "Import an existing project" → select the `daily-sublime` repo
+2. Click "Add new site" → "Import an existing project" → select the `human-element` repo
 3. Netlify auto-detects Astro — build settings should be pre-filled:
    - Build command: `npm run build`
    - Publish directory: `dist`
-4. Deploy. Your site will be live at `https://daily-sublime.netlify.app` (or a similar subdomain)
+4. Deploy. Your site will be live at `https://human-element.netlify.app` (or a similar subdomain)
 5. Optionally set a custom domain in Site configuration → Domain management
 
 ### 3. Set up daily automation
@@ -177,14 +177,14 @@ git push -u origin main
 
 1. Create a [Buttondown](https://buttondown.com) account
 2. Go to Settings → Automations → RSS-to-email
-3. Add your RSS feed URL: `https://daily-sublime.netlify.app/rss.xml`
+3. Add your RSS feed URL: `https://human-element.netlify.app/rss.xml`
 4. Set cadence to "every new item"
 5. Enable "skip old items" to prevent back-sending existing entries
-6. Update the Buttondown username in `src/components/SubscribeForm.astro` (replace `the-daily-sublime` with your actual Buttondown handle)
+6. Update the Buttondown username in `src/components/SubscribeForm.astro` (replace `the-human-element` with your actual Buttondown handle)
 
 ### 5. Optional: custom domain
 
-If you purchase a domain (e.g., `thedailysublime.com`):
+If you purchase a domain (e.g., `thehumanelement.blog`):
 
 1. Add it in Netlify → Site configuration → Domain management
 2. Update `site` in `astro.config.mjs` to match
@@ -206,11 +206,11 @@ These are not yet implemented but are natural next steps:
 
 The generation script (`scripts/generate-entry.mjs`) draws from a wide range of traditions:
 
-- Stoic, Epicurean, and existentialist philosophy
-- Romantic and transcendentalist poetry
-- Zen Buddhism, Taoism, Sufism
-- Contemporary poetry and nature writing
-- Mystics read as literature
+- Philosophy on craft, technology, and creativity (Heidegger, Arendt, Camus)
+- Letters and essays on the creative life (Rilke, Woolf, Keats)
+- Writings on attention and presence (Simone Weil, Mary Oliver, Annie Dillard)
+- Historical responses to new technologies (Socrates on writing, Benjamin on photography)
+- Contemporary voices on creativity and making (Austin Kleon, Jenny Odell, George Saunders)
 
 The curated reference list in `scripts/sources.json` guides variety but doesn't limit the AI — it can draw from its full training data. The script tracks recent authors and themes to avoid repetition.
 

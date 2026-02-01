@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'A daily secular devotional. One passage. One reflection. Every morning.' } = Astro.props;
+const { title, description = 'Daily wisdom for creative humans in the age of AI. One passage. One reflection. Every morning.' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -21,7 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:site_name" content="The Daily Sublime" />
+<meta property="og:site_name" content="The Human Element" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary" />
@@ -29,7 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta name="twitter:description" content={description} />
 
 <!-- RSS -->
-<link rel="alternate" type="application/rss+xml" title="The Daily Sublime" href="/rss.xml" />
+<link rel="alternate" type="application/rss+xml" title="The Human Element" href="/rss.xml" />
 
 <!-- Favicon -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

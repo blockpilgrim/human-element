@@ -13,9 +13,9 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    title: 'The Daily Sublime',
+    title: 'The Human Element',
     description:
-      'A daily secular devotional. One passage. One reflection. Every morning.',
+      'Daily wisdom for creative humans in the age of AI. One passage. One reflection. Every morning.',
     site: context.site!.toString(),
     items: sorted.map((entry) => ({
       title: entry.data.title,
