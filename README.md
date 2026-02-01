@@ -188,7 +188,7 @@ These are not yet implemented but are natural next steps:
 - **Approval workflow** — Have the GitHub Action create a draft PR instead of auto-committing, so you can review before publishing
 - **Batch generation** — Generate a week of entries at once for review
 - **Analytics** — [Plausible](https://plausible.io) or [Fathom](https://usefathom.com) for privacy-respecting analytics
-- **Dark mode** — CSS `prefers-color-scheme` media query with inverted warm tones
+- **Dark mode** — ~~CSS `prefers-color-scheme` media query with inverted warm tones~~ (implemented)
 
 ## Content curation
 
