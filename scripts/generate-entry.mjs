@@ -1,4 +1,9 @@
-import Anthropic from '@anthropic-ai/sdk';
+// --- Claude / Anthropic SDK (commented out for now) ---
+// import Anthropic from '@anthropic-ai/sdk';
+
+// --- OpenRouter via OpenAI-compatible SDK ---
+import OpenAI from 'openai';
+
 import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -51,9 +56,17 @@ for (const file of existingFiles) {
 const sources = JSON.parse(readFileSync(SOURCES_FILE, 'utf-8'));
 
 // ---------------------------------------------------------------------------
-// 4. Call Claude API
+// 4. Call LLM API
 // ---------------------------------------------------------------------------
-const client = new Anthropic();
+
+// --- Claude / Anthropic client (commented out for now) ---
+// const client = new Anthropic();
+
+// --- OpenRouter client (Kimi K2.5) ---
+const client = new OpenAI({
+  baseURL: 'https://openrouter.ai/api/v1',
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
 
 const systemPrompt = `You are the editor of "The Daily Sublime," a daily secular devotional blog. Your task is to select a passage and write a brief commentary.
 
@@ -121,28 +134,78 @@ IMPORTANT notes on the frontmatter:
 - Set "excerpt: true" ONLY when the passage is a copyrighted excerpt (not the full text). Set "excerpt: false" for public domain works where you included the full text.
 - Include "passageLink" ONLY when excerpt is true AND you can identify a legitimate URL for the full text. Omit the passageLink line entirely if excerpt is false or if you cannot confidently identify a URL.`;
 
-const message = await client.messages.create({
-  // model: 'claude-sonnet-4-5-20250929',
-  model: 'claude-opus-4-5-20251101',
-  max_tokens: 1500,
+// --- Claude API call (commented out for now) ---
+// const message = await client.messages.create({
+//   // model: 'claude-sonnet-4-5-20250929',
+//   model: 'claude-opus-4-5-20251101',
+//   max_tokens: 1500,
+//   temperature: 0.9,
+//   messages: [
+//     {
+//       role: 'user',
+//       content: `Generate today's entry for The Daily Sublime (${today}). Select a meaningful passage and write a thoughtful commentary.`,
+//     },
+//   ],
+//   system: systemPrompt,
+// });
+// const output = message.content[0].text.trim();
+
+// --- OpenRouter / Kimi K2.5 API call ---
+console.log('Calling Kimi K2.5 via OpenRouter (thinking models can take a minute or two)...');
+const message = await client.chat.completions.create({
+  model: 'moonshotai/kimi-k2.5',
+  max_tokens: 16000, // Kimi's thinking tokens count against this limit, so leave plenty of room
   temperature: 0.9,
   messages: [
+    { role: 'system', content: systemPrompt },
     {
       role: 'user',
       content: `Generate today's entry for The Daily Sublime (${today}). Select a meaningful passage and write a thoughtful commentary.`,
     },
   ],
-  system: systemPrompt,
-});
+}, { timeout: 180_000 }); // 3 minute timeout
+console.log('Response received.');
 
-const output = message.content[0].text.trim();
+if (!message.choices?.length || !message.choices[0].message?.content) {
+  console.error('ERROR: Empty or malformed response from OpenRouter');
+  console.error(JSON.stringify(message, null, 2));
+  process.exit(1);
+}
+
+let output = message.choices[0].message.content.trim();
+console.log(`Raw output length: ${output.length} chars`);
+
+// Strip thinking/reasoning that some models (e.g. Kimi K2.5) include in the response.
+// The model wraps chain-of-thought in <think>...</think> tags, which can contain
+// draft frontmatter blocks. Strip everything up to and including </think> first.
+const thinkClose = output.lastIndexOf('</think>');
+if (thinkClose !== -1) {
+  console.log(`Stripped </think> block (${thinkClose + 8} chars of reasoning)`);
+  output = output.substring(thinkClose + 8).trim();
+}
+
+// Strip code fences that models sometimes wrap around structured output.
+output = output.replace(/^```\w*\n/, '').replace(/\n```\s*$/, '');
+
+// If there's still non-frontmatter text before the first ---, strip it too.
+const fmStart = output.indexOf('---');
+if (fmStart > 0) {
+  console.log(`Stripped ${fmStart} additional chars before frontmatter`);
+  output = output.substring(fmStart);
+}
+
+console.log(`Cleaned output length: ${output.length} chars`);
 
 // ---------------------------------------------------------------------------
 // 5. Basic validation
 // ---------------------------------------------------------------------------
 if (!output.startsWith('---')) {
   console.error('ERROR: Output does not start with frontmatter delimiter');
-  console.error(output.substring(0, 200));
+  console.error('First 500 chars of cleaned output:');
+  console.error(output.substring(0, 500));
+  console.error('---');
+  console.error('First 500 chars of RAW output:');
+  console.error(message.choices[0].message.content.substring(0, 500));
   process.exit(1);
 }
 
