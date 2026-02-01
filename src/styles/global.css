@@ -20,6 +20,8 @@
   --color-tag-text: #5c554e;
   --color-calendar-active: #8b6f4e;
   --color-calendar-today: #5e7a60;
+  --color-on-accent: #fff;
+  --color-input-bg: #fff;
 
   /* Typography */
   --font-serif: 'Source Serif 4 Variable', 'Georgia', 'Times New Roman', serif;
@@ -55,6 +57,29 @@
 @media (min-width: 768px) {
   :root {
     --side-padding: 2rem;
+  }
+}
+
+/* === Dark Mode === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1c1917;
+    --color-bg-alt: #282422;
+    --color-text: #e7e0d8;
+    --color-text-muted: #a8a099;
+    --color-text-faint: #706861;
+    --color-accent: #c49a6c;
+    --color-accent-hover: #d4ac82;
+    --color-border: #3d3733;
+    --color-rule: #4d453f;
+    --color-link: #82ad85;
+    --color-link-hover: #a3c8a5;
+    --color-tag-bg: #302b28;
+    --color-tag-text: #b5ada5;
+    --color-calendar-active: #c49a6c;
+    --color-calendar-today: #82ad85;
+    --color-on-accent: #fff;
+    --color-input-bg: #282422;
   }
 }
 
@@ -508,12 +533,12 @@ a:hover {
 
 .calendar-grid .has-entry a:hover {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-on-accent);
 }
 
 .calendar-grid .is-today a {
   background: var(--color-calendar-today);
-  color: #fff;
+  color: var(--color-on-accent);
 }
 
 .calendar-grid .is-today a:hover {
@@ -550,7 +575,7 @@ a:hover {
   border-radius: 4px;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  background: #fff;
+  background: var(--color-input-bg);
   color: var(--color-text);
 }
 
@@ -563,7 +588,7 @@ a:hover {
 .subscribe-form button {
   padding: var(--space-2) var(--space-4);
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-on-accent);
   border: none;
   border-radius: 4px;
   font-family: var(--font-sans);
