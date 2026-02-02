@@ -19,8 +19,8 @@ const description = entry
 <BaseLayout title="The Human Element" description={description}>
   {entry && <EntryCard entry={entry} isHomepage={true} />}
 
-  <div style="display: flex; gap: var(--space-4); margin-top: var(--space-8);">
-    <a href={`/entry/${entry.id}`} class="random-button">Permalink</a>
+  <div class="entry-actions">
+    <a href={`/entry/${entry.id}`}>Permalink &nearr;</a>
     <RandomButton />
   </div>
 </BaseLayout>

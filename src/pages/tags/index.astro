@@ -21,10 +21,10 @@ const sortedTags = [...tagCounts.entries()].sort((a, b) =>
 <BaseLayout title="Themes — The Human Element">
   <h1 class="page-title">Themes</h1>
 
-  <ul class="tag-list" style="gap: var(--space-3);">
+  <ul class="tag-list">
     {sortedTags.map(([tag, count]) => (
       <li>
-        <a href={`/tags/${tag}`}>{tag} <span style="opacity: 0.6;">({count})</span></a>
+        <a href={`/tags/${tag}`}>{tag} <span style="opacity: 0.5;">({count})</span></a>
       </li>
     ))}
   </ul>

@@ -5,8 +5,8 @@ const entries = await getCollection('entries', ({ data }) => !data.draft);
 const slugs = entries.map((e) => e.id);
 ---
 
-<a href="/random" class="random-button" id="random-btn" data-slugs={JSON.stringify(slugs)}>
-  Random entry
+<a href="/random" class="entry-action-link" id="random-btn" data-slugs={JSON.stringify(slugs)}>
+  A random entry &rarr;
 </a>
 
 <script>

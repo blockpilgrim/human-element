@@ -1,10 +1,16 @@
 ---
 const pathname = Astro.url.pathname;
+const isHome = pathname === '/' || pathname === '';
 ---
 
 <header class="site-header">
-  <div class="site-title">
-    <a href="/">The Human Element</a>
+  <div class="site-title-group">
+    <div class="site-title">
+      <a href="/">The Human Element</a>
+    </div>
+    {isHome && (
+      <span class="site-tagline">On craft, originality, and what remains ours</span>
+    )}
   </div>
   <nav class="site-nav" aria-label="Main">
     <a href="/archive" aria-current={pathname.startsWith('/archive') ? 'page' : undefined}>Archive</a>

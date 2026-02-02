@@ -22,13 +22,13 @@ const description = `"${data.passage.trim().slice(0, 120)}..." — ${data.author
       {prev ? (
         <a href={`/entry/${prev.id}`}>
           <span class="nav-label">Previous</span>
-          {prev.data.title}
+          <span class="nav-title">{prev.data.title}</span>
         </a>
       ) : <span />}
       {next ? (
         <a href={`/entry/${next.id}`} class="nav-next">
           <span class="nav-label">Next</span>
-          {next.data.title}
+          <span class="nav-title">{next.data.title}</span>
         </a>
       ) : <span />}
     </nav>
