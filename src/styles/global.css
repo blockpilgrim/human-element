@@ -304,7 +304,6 @@ a:hover {
 /* === Entry: Passage === */
 .entry-passage {
   position: relative;
-  font-style: italic;
   font-size: var(--font-size-md);
   line-height: var(--line-height-passage);
   padding: var(--space-4) var(--space-6);
@@ -335,6 +334,18 @@ a:hover {
   .entry-passage::before {
     font-size: 5rem;
     left: 0.25rem;
+  }
+}
+
+/* Long passages — step down to comfortable reading size */
+.entry-passage--long {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+}
+
+@media (min-width: 768px) {
+  .entry-passage--long {
+    font-size: var(--font-size-md);
   }
 }
 
