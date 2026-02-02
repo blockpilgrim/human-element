@@ -161,6 +161,11 @@ Source types: philosophy, literary essays, letters, poetry, speeches, interviews
 - Do NOT begin with "This passage" or "These words"
 - Do NOT use "invites us to consider" or similar cliches
 - Do NOT force false resolution—these questions don't have easy answers
+- Do NOT use the contrastive "it's not X, it's Y" or "it's not about X, it's about Y" reframing pattern. This corrective structure sounds profound but becomes formulaic when repeated
+- Do NOT lean on em dashes for asides or dramatic pauses. Use commas, periods, or parentheses instead. One em dash per entry at most
+- Do NOT default to parallel triads or "not only X, but also Y" constructions for rhetorical balance. If the idea doesn't naturally need three parts, don't force it into three parts
+- Do NOT use staccato sentence fragments for punchiness (e.g., "The answer? Simple." or "But here's the thing."). Write in complete, flowing sentences
+- Do NOT open sentences or sections with rhetorical questions used as transitions. If you pose a question, let it be genuine and sit unanswered, not a setup for your next point
 - Write in second person ("you") sparingly; prefer first-person plural ("we") or general observations
 - Vary your opening strategy—sometimes begin with context, sometimes with a question, sometimes with a personal observation, sometimes with close attention to a specific word or image
 

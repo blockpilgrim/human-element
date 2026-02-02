@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-The Human Element is a daily wisdom blog — curated literary/philosophical passages paired with AI-generated meditative commentary. Built as a fully static site with no database or server runtime.
+The Human Element is a daily wisdom blog — curated literary/philosophical passages paired with AI-generated meditative commentary. Built as a fully static site with no database or server runtime. 
+
+More info about the product vision can be found in `docs/the-human-element-product-spec.md`.
 
 ## Commands
 
