@@ -193,7 +193,7 @@ passage: |
   preserving line breaks for poetry.
 author: "Author Full Name"
 source: "Title of Work"
-sourceYear: YYYY
+sourceYear: "YYYY or approximate (e.g., '1920', 'c. 370 BCE', '1850s')"
 excerpt: false
 passageLink: "https://example.com/full-text"
 tags:

@@ -24,7 +24,7 @@ const entries = defineCollection({
     // Attribution
     author: z.string(),
     source: z.string(),
-    sourceYear: z.number().optional(),
+    sourceYear: z.string().optional(),
 
     // Copyright handling
     // true = copyrighted excerpt (fair use), false = full public domain text
