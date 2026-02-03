@@ -40,7 +40,11 @@ No lint or test commands exist in this project.
 - `tags` (1-5 strings from controlled vocabulary in `scripts/sources.json`)
 - `draft` (boolean, default false)
 
-**LLM provider switching:** The generation script currently uses Anthropic directly. Commented-out code exists for OpenRouter/Kimi K2.5. Both patterns are in `scripts/generate-entry.mjs` and `.github/workflows/generate-daily.yml`. See README for switching instructions.
+**Generation model:** Claude Opus 4.5 via Anthropic SDK with extended thinking enabled (20K token budget). Temperature 1 for maximum creativity. The script reads the last 14 entries to build an avoidance list of recent authors and tags, then constructs a system prompt incorporating themes and suggested authors from `scripts/sources.json`. Commented-out code exists for OpenRouter/Kimi K2.5; see README for switching instructions.
+
+**Generation output validation:** The script validates LLM output before writing: checks YAML frontmatter delimiters, required fields (title, date, passage, author, source, tags), and minimum body length (>100 chars). Failures log errors but don't halt batch runs.
+
+**`scripts/sources.json`:** Defines 12 thematic categories, ~60 suggested authors, and the controlled tag vocabulary (~40 tags). Tags in entry frontmatter must come from this vocabulary. The generation prompt weaves these into author suggestions and thematic guidance.
 
 ## Routing
 
@@ -54,7 +58,9 @@ All routes are statically generated at build time. No SSR.
 | `/archive/calendar` | `pages/archive/calendar.astro` | Monthly calendar grid |
 | `/tags` | `pages/tags/index.astro` | All tags with counts |
 | `/tags/[tag]` | `pages/tags/[tag].astro` | Entries filtered by tag |
-| `/random` | `pages/random.astro` | Server-side redirect to random entry |
+| `/random` | `pages/random.astro` | Client-side redirect to random entry |
+| `/about` | `pages/about.astro` | About page |
+| `/subscribe` | `pages/subscribe.astro` | Email subscription landing page |
 | `/rss.xml` | `pages/rss.xml.ts` | Full-content RSS feed |
 
 ## Styling
@@ -68,6 +74,7 @@ Single global stylesheet at `src/styles/global.css` using vanilla CSS with custo
 - **Adaptive passage styling:** `EntryCard.astro` applies `entry-passage--long` class for passages over 150 words.
 - **RSS feed** in `rss.xml.ts` renders full markdown to HTML via `markdown-it` and sanitizes with `sanitize-html`.
 - **Generation context window:** The generation script reads the last 14 entries to avoid repeating authors and themes.
+- **Writing guidelines in generation prompt:** The system prompt enforces specific stylistic avoidances — no em dashes as dramatic pivots, no parallel triads, no rhetorical questions as closers, no staccato fragments, no "we" as false intimacy. These editorial rules are embedded directly in the prompt string in `generate-entry.mjs`.
 
 ## Environment Variables
 
