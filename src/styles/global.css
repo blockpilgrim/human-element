@@ -54,14 +54,32 @@
   --space-16: 4rem;
   --space-24: 6rem;
 
-  /* Layout */
-  --max-width: 38rem;
-  --side-padding: 1.25rem;
+  /* Layout — optimized for 60-70 characters/line (UX sweet spot) */
+  --max-width: 40rem; /* ~640px at 16px base, achieving ~65 chars/line */
+  --side-padding: clamp(1.25rem, 5vw, 2rem);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --side-padding: clamp(1.5rem, 6vw, 3rem);
+  }
 }
 
 @media (min-width: 768px) {
   :root {
-    --side-padding: 2rem;
+    --side-padding: clamp(2rem, 5vw, 3rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --side-padding: clamp(2.5rem, 4vw, 4rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --side-padding: clamp(3rem, 5vw, 6rem);
   }
 }
 
