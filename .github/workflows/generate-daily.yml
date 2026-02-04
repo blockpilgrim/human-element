@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name "Human Element Bot"
           git config user.email "bot@thehumanelement.blog"
-          git add src/content/entries/
+          git add src/content/entries/ scripts/used-passages.json
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "Daily update: publish and generate entries"
           git push

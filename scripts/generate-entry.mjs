@@ -4,6 +4,7 @@ import Anthropic from '@anthropic-ai/sdk';
 // --- OpenRouter via OpenAI-compatible SDK (commented out for now) ---
 // import OpenAI from "openai";
 
+import { createHash } from 'crypto';
 import {
   readFileSync,
   writeFileSync,
@@ -17,6 +18,7 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ENTRIES_DIR = join(__dirname, "..", "src", "content", "entries");
 const SOURCES_FILE = join(__dirname, "sources.json");
+const PASSAGES_FILE = join(__dirname, "used-passages.json");
 
 // Parse --count flag (default: 1)
 const countFlagIndex = process.argv.indexOf("--count");
@@ -28,6 +30,12 @@ const COUNT =
 // Ensure entries directory exists
 if (!existsSync(ENTRIES_DIR)) {
   mkdirSync(ENTRIES_DIR, { recursive: true });
+}
+
+// Load the used passages registry
+let usedPassages = { version: 1, lastUpdated: null, passages: [] };
+if (existsSync(PASSAGES_FILE)) {
+  usedPassages = JSON.parse(readFileSync(PASSAGES_FILE, 'utf-8'));
 }
 
 for (let i = 0; i < COUNT; i++) {
@@ -78,6 +86,14 @@ for (let i = 0; i < COUNT; i++) {
       if (tags) recentTags.push(...tags);
     }
   }
+
+  // Build deduplicated list of all previously used sources for the prompt
+  const uniqueSources = [...new Map(
+    usedPassages.passages.map(p => [
+      `${p.author}|${p.source}`,
+      { author: p.author, source: p.source, sourceYear: p.sourceYear }
+    ])
+  ).values()];
 
   // ---------------------------------------------------------------------------
   // 3. Load the curated sources list
@@ -137,6 +153,13 @@ Source types: philosophy, literary essays, letters, poetry, speeches, interviews
 - When using an excerpt, the commentary MUST acknowledge it is an excerpt (e.g., "The essay opens with..." or "In these lines from..."). Do not write about the passage as if it were the complete work.
 - When using an excerpt, try to find a legitimate URL where the full text can be read. If you can identify a plausible URL, include it as "passageLink" in the frontmatter. If you are not confident in the URL, omit passageLink entirely—do not guess.
 
+## Accuracy and attribution
+
+- Use passages you are confident are real and accurately attributed.
+- Prefer primary sources (letters, diaries, published essays/books, lecture transcripts) or reputable interviews.
+- Avoid "floating quotes" and quote-aggregation sites. If you cannot confidently name the work or interview where a line appears, choose a different passage.
+- For figures frequently misquoted or quoted second-hand (e.g., Picasso), only use a quotation if you can name the specific source (book/interview/letter) you are quoting from.
+
 ## Guidelines for commentary
 
 **Tone:**
@@ -176,6 +199,12 @@ Source types: philosophy, literary essays, letters, poetry, speeches, interviews
 - Vary between historical and contemporary sources
 - Vary between prose and poetry
 - Vary between well-known and lesser-known voices
+
+## Previously used passages
+
+The following author/source combinations have already been featured. You may select a DIFFERENT passage from the same author or work, but do NOT repeat a passage that has already appeared:
+
+${uniqueSources.length > 0 ? uniqueSources.map(s => `- ${s.author}, "${s.source}"${s.sourceYear ? ` (${s.sourceYear})` : ''}`).join('\n') : '(none yet)'}
 
 ## Tags
 
@@ -332,12 +361,101 @@ IMPORTANT notes on the frontmatter:
   }
 
   // ---------------------------------------------------------------------------
-  // 6. Write the file
+  // 6. Check for duplicate passage
+  // ---------------------------------------------------------------------------
+  const passageMatch = frontmatter.match(/^passage:\s*\|?\n?([\s\S]*?)(?=\n[a-zA-Z]|\n---)/m);
+  let passageText = '';
+  if (passageMatch) {
+    passageText = passageMatch[1]
+      .split('\n')
+      .map(line => line.replace(/^  /, ''))
+      .join('\n')
+      .trim();
+  }
+
+  const normalizedPassage = normalizePassage(passageText);
+  const passageHash = hashPassage(normalizedPassage);
+
+  const existingPassage = usedPassages.passages.find(p => p.passageHash === passageHash);
+  if (existingPassage) {
+    console.error(`ERROR: Duplicate passage detected!`);
+    console.error(`This passage was already used in entry: ${existingPassage.entryDate}`);
+    console.error(`Author: ${existingPassage.author}, Source: "${existingPassage.source}"`);
+    process.exit(1);
+  }
+
+  // ---------------------------------------------------------------------------
+  // 7. Write the file
   // ---------------------------------------------------------------------------
   writeFileSync(outputPath, output + "\n", "utf-8");
   console.log(`Successfully generated: ${outputPath}`);
-  console.log(
-    `Author: ${frontmatter.match(/^author:\s*"?(.+?)"?\s*$/m)?.[1] || "unknown"}`,
-  );
+
+  const authorMatch = frontmatter.match(/^author:\s*"?(.+?)"?\s*$/m);
+  const sourceMatch = frontmatter.match(/^source:\s*"?(.+?)"?\s*$/m);
+  const yearMatch = frontmatter.match(/^sourceYear:\s*"?(.+?)"?\s*$/m);
+
+  const author = authorMatch ? authorMatch[1].replace(/^"|"$/g, '') : 'unknown';
+  const source = sourceMatch ? sourceMatch[1].replace(/^"|"$/g, '') : 'unknown';
+  const sourceYear = yearMatch ? yearMatch[1].replace(/^"|"$/g, '') : null;
+
+  console.log(`Author: ${author}`);
   console.log(`Body: ${body.length} characters`);
+
+  // ---------------------------------------------------------------------------
+  // 8. Update the passages registry
+  // ---------------------------------------------------------------------------
+  const newPassageEntry = {
+    id: createPassageId(author, source, sourceYear, passageHash),
+    author,
+    source,
+    sourceYear,
+    passageHash,
+    passagePreview: passageText.substring(0, 80).replace(/\n/g, ' ') + '...',
+    entryDate: targetDate,
+  };
+
+  usedPassages.passages.push(newPassageEntry);
+  usedPassages.lastUpdated = new Date().toISOString();
+  writeFileSync(PASSAGES_FILE, JSON.stringify(usedPassages, null, 2) + '\n', 'utf-8');
+  console.log(`Updated passages registry (${usedPassages.passages.length} total passages)`);
 } // end for loop (--count)
+
+// ---------------------------------------------------------------------------
+// Helper functions for passage deduplication
+// ---------------------------------------------------------------------------
+
+/**
+ * Normalize passage text for consistent hashing:
+ * - Lowercase
+ * - Collapse whitespace (including newlines) to single spaces
+ * - Strip punctuation
+ * - Trim
+ */
+function normalizePassage(text) {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .replace(/[^\w\s]/g, '')
+    .trim();
+}
+
+/**
+ * Generate SHA-256 hash of normalized passage text
+ */
+function hashPassage(normalizedText) {
+  return createHash('sha256').update(normalizedText).digest('hex');
+}
+
+/**
+ * Create a human-readable ID from author, source, year, and hash
+ */
+function createPassageId(author, source, year, hash) {
+  const slug = [author, source, year]
+    .filter(Boolean)
+    .join('-')
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .substring(0, 50);
+  return `${slug}-${hash.substring(0, 8)}`;
+}

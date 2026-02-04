@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-02-04T10:13:10.797Z",
+  "passages": [
+    {
+      "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
+      "author": "Matthew Crawford",
+      "source": "Shop Class as Soulcraft",
+      "sourceYear": "2009",
+      "passageHash": "bde30e7910e72d2d985240c90ba8b6d3a959fb40e58f7c683a2ed6f29d566803",
+      "passagePreview": "The use of tools requires a certain posture toward the world: the user must be a...",
+      "entryDate": "2026-01-15"
+    },
+    {
+      "id": "john-ruskin-the-stones-of-venice-1853-0594dc56",
+      "author": "John Ruskin",
+      "source": "The Stones of Venice",
+      "sourceYear": "1853",
+      "passageHash": "0594dc56ffe853ca9fe3f1599e1a13e4d4c6747d412ce42c44c3b5166ab70fc3",
+      "passagePreview": "Go forth again to gaze upon the old cathedral front, where you have smiled so of...",
+      "entryDate": "2026-01-16"
+    },
+    {
+      "id": "john-keats-letter-to-george-and-tom-keats-december-a6526622",
+      "author": "John Keats",
+      "source": "Letter to George and Tom Keats (December 21, 1817)",
+      "sourceYear": "1817",
+      "passageHash": "a65266223cf956b3e87ed31d907f29d1c4d6d7ef9713bf54d676337d7e4d4071",
+      "passagePreview": "I had not a dispute but a disquisition with Dilke, upon various subjects; severa...",
+      "entryDate": "2026-01-17"
+    },
+    {
+      "id": "t-s-eliot-tradition-and-the-individual-talent-1919-7583048f",
+      "author": "T. S. Eliot",
+      "source": "Tradition and the Individual Talent",
+      "sourceYear": "1919",
+      "passageHash": "7583048fdef537ac0d1352e24c430161ccffcd557d7c3d6e81823cb7041b74a5",
+      "passagePreview": "Yet if the only form of tradition, of handing down, consisted in following the w...",
+      "entryDate": "2026-01-18"
+    },
+    {
+      "id": "george-orwell-why-i-write-1946-9809d6e3",
+      "author": "George Orwell",
+      "source": "Why I Write",
+      "sourceYear": "1946",
+      "passageHash": "9809d6e3886de2dbf1e741cf8802de4f94f6dc957f4d65aa8cd8839cda476e6a",
+      "passagePreview": "Sheer egoism. Desire to seem clever, to be talked about, to be remembered after ...",
+      "entryDate": "2026-01-20"
+    },
+    {
+      "id": "rainer-maria-rilke-letters-to-a-young-poet-1903-8badf2d9",
+      "author": "Rainer Maria Rilke",
+      "source": "Letters to a Young Poet",
+      "sourceYear": "1903",
+      "passageHash": "8badf2d97b92af954a4aa35ada799565f254b55f2b798d4107cf02d7e9deb416",
+      "passagePreview": "You ask whether your verses are any good. You ask me. You have asked others befo...",
+      "entryDate": "2026-01-21"
+    },
+    {
+      "id": "lao-tzu-tao-te-ching-chapter-11-a7e6228b",
+      "author": "Lao Tzu",
+      "source": "Tao Te Ching, Chapter 11",
+      "sourceYear": null,
+      "passageHash": "a7e6228b1b442a2d334eb39076f39fe07e86ceba5b47c8db68afc71f3bae4fa0",
+      "passagePreview": "Thirty spokes unite in one hub; it is the center hole that makes the cart useful...",
+      "entryDate": "2026-01-22"
+    },
+    {
+      "id": "seneca-moral-letters-to-lucilius-letter-84-65-d1b24e60",
+      "author": "Seneca",
+      "source": "Moral Letters to Lucilius, Letter 84",
+      "sourceYear": "65",
+      "passageHash": "d1b24e603cccc211029631d70a1abb06aec6de2609e4e5d9f9a1a2c94c8861f3",
+      "passagePreview": "We should follow, men say, the example of the bees, who flit about and cull the ...",
+      "entryDate": "2026-01-23"
+    },
+    {
+      "id": "michel-de-montaigne-essays-of-the-education-of-chi-a7c6e389",
+      "author": "Michel de Montaigne",
+      "source": "Essays, 'Of the Education of Children' (trans. John Florio)",
+      "sourceYear": "1580",
+      "passageHash": "a7c6e38971a48f9467d3eb2c3958a751c1e12a5f48be254998faf5c0b908cd6f",
+      "passagePreview": "Even as bees pillage here and there from flowers, but afterward make honey, whic...",
+      "entryDate": "2026-01-24"
+    },
+    {
+      "id": "william-butler-yeats-sailing-to-byzantium-1928-84be9974",
+      "author": "William Butler Yeats",
+      "source": "Sailing to Byzantium",
+      "sourceYear": "1928",
+      "passageHash": "84be99747929a3c214fff13fb063a32835e5db4e83730b2d392032ec1987429c",
+      "passagePreview": "That is no country for old men. The young In one another's arms, birds in the tr...",
+      "entryDate": "2026-01-25"
+    },
+    {
+      "id": "william-blake-the-marriage-of-heaven-and-hell-1790-ed71d496",
+      "author": "William Blake",
+      "source": "The Marriage of Heaven and Hell",
+      "sourceYear": "1790",
+      "passageHash": "ed71d49667d35405954e3e727db3ffe8deeb47ee01a61501d5ef0b6ff0f1bcba",
+      "passagePreview": "The road of excess leads to the palace of wisdom. ... If the fool would persist ...",
+      "entryDate": "2026-01-26"
+    },
+    {
+      "id": "vincent-van-gogh-letters-to-theo-van-gogh-1883-e58c8f9c",
+      "author": "Vincent van Gogh",
+      "source": "Letters to Theo van Gogh",
+      "sourceYear": "1883",
+      "passageHash": "e58c8f9c41ae7f3a2dbfe6f089e6eacce53455ea61db1cfad007956cbe74d0a9",
+      "passagePreview": "Just slap anything on when you see a blank canvas staring at you like some imbec...",
+      "entryDate": "2026-01-27"
+    },
+    {
+      "id": "emily-dickinson-poems-1896-76a80866",
+      "author": "Emily Dickinson",
+      "source": "Poems",
+      "sourceYear": "1896",
+      "passageHash": "76a808662b88f414e2fc446aafa9b38e12a6fb0405b38c50200574f6f96210a4",
+      "passagePreview": "To make a prairie it takes a clover and one bee, One clover, and a bee, And reve...",
+      "entryDate": "2026-01-28"
+    },
+    {
+      "id": "virginia-woolf-a-room-of-ones-own-1929-c077eb97",
+      "author": "Virginia Woolf",
+      "source": "A Room of One's Own",
+      "sourceYear": "1929",
+      "passageHash": "c077eb973e813c00a6527dc9abcd768a4c9a937e993b4ebfdba0379be6edc846",
+      "passagePreview": "For masterpieces are not single and solitary births; they are the outcome of man...",
+      "entryDate": "2026-01-29"
+    },
+    {
+      "id": "robert-henri-the-art-spirit-1923-e520eda7",
+      "author": "Robert Henri",
+      "source": "The Art Spirit",
+      "sourceYear": "1923",
+      "passageHash": "e520eda72a953221c760751299b261177de8dfa0fa872e62ad1e6a3bfe0e7b60",
+      "passagePreview": "The object of painting a picture is not to make a picture—however unreasonable t...",
+      "entryDate": "2026-01-30"
+    },
+    {
+      "id": "john-ruskin-the-stones-of-venice-1853-5199c1ec",
+      "author": "John Ruskin",
+      "source": "The Stones of Venice",
+      "sourceYear": "1853",
+      "passageHash": "5199c1ec05b7f72f42b78e14aa4572dda662be311f39338dd45fd67cef8dbcca",
+      "passagePreview": "Imperfection is in some sort essential to all that we know of life. It is the si...",
+      "entryDate": "2026-01-31"
+    },
+    {
+      "id": "john-keats-letter-to-george-and-tom-keats-1817-9d20bb9e",
+      "author": "John Keats",
+      "source": "Letter to George and Tom Keats",
+      "sourceYear": "1817",
+      "passageHash": "9d20bb9e307a53ba0bc7cbe8bce442c7a51b3adfb578dc7bf6979e8541576605",
+      "passagePreview": "I had not a dispute but a disquisition with Dilke, on various subjects; several ...",
+      "entryDate": "2026-02-01"
+    },
+    {
+      "id": "ts-eliot-tradition-and-the-individual-talent-1919-80250221",
+      "author": "T.S. Eliot",
+      "source": "Tradition and the Individual Talent",
+      "sourceYear": "1919",
+      "passageHash": "802502211d6002f60e034fd7fa1f4ff380ac74b314dc2ee095a28aaaf9c51f61",
+      "passagePreview": "No poet, no artist of any art, has his complete meaning alone. His significance,...",
+      "entryDate": "2026-02-02"
+    },
+    {
+      "id": "plato-phaedrus-c-370-bce-3bb2b1bb",
+      "author": "Plato",
+      "source": "Phaedrus",
+      "sourceYear": "c. 370 BCE",
+      "passageHash": "3bb2b1bb9e896034b6ae39dc3842eebcc088d9129b5868d578ed8e784c7fc19e",
+      "passagePreview": "The story goes that Theuth was the inventor of many arts, and he went to the gre...",
+      "entryDate": "2026-02-03"
+    },
+    {
+      "id": "friedrich-nietzsche-the-gay-science-1882-2010cb0c",
+      "author": "Friedrich Nietzsche",
+      "source": "The Gay Science",
+      "sourceYear": "1882",
+      "passageHash": "2010cb0c1b7317359bd5573b5766084b8d94ae55d5e5fad67f9c8d05f0486d1b",
+      "passagePreview": "One thing is needful.— To 'give style' to one's character—a great and rare art! ...",
+      "entryDate": "2026-02-04"
+    },
+    {
+      "id": "rainer-maria-rilke-letters-to-a-young-poet-1904-ca7cbd1c",
+      "author": "Rainer Maria Rilke",
+      "source": "Letters to a Young Poet",
+      "sourceYear": "1904",
+      "passageHash": "ca7cbd1c332961702b4d7eb14725e1acd525056772858bf3c34a33ec98027a71",
+      "passagePreview": "We have no reason to harbor any mistrust against our world, for it is not agains...",
+      "entryDate": "2026-02-05"
+    },
+    {
+      "id": "robert-frost-a-boys-will-1913-ced504cc",
+      "author": "Robert Frost",
+      "source": "A Boy's Will",
+      "sourceYear": "1913",
+      "passageHash": "ced504cc613caa09a2769bfafea66cb874cbebd286b6a52d1fd09668029fd415",
+      "passagePreview": "There was never a sound beside the wood but one, And that was my long scythe whi...",
+      "entryDate": "2026-02-06"
+    }
+  ]
+}
