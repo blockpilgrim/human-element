@@ -19,7 +19,7 @@ npm run generate -- --count N  # Generate N entries in batch
 npm run publish:entries  # Flip draft→published for entries with date ≤ today
 ```
 
-No lint or test commands exist in this project.
+No lint or test commands exist in this project. Requires Node.js 22+.
 
 ## Architecture
 
@@ -74,7 +74,7 @@ Single global stylesheet at `src/styles/global.css` using vanilla CSS with custo
 - **Adaptive passage styling:** `EntryCard.astro` applies `entry-passage--long` class for passages over 150 words.
 - **RSS feed** in `rss.xml.ts` renders full markdown to HTML via `markdown-it` and sanitizes with `sanitize-html`.
 - **Generation context window:** The generation script reads the last 14 entries to avoid repeating authors and themes.
-- **Writing guidelines in generation prompt:** The system prompt enforces specific stylistic avoidances — no em dashes as dramatic pivots, no parallel triads, no rhetorical questions as closers, no staccato fragments, no "we" as false intimacy. These editorial rules are embedded directly in the prompt string in `generate-entry.mjs`.
+- **Writing guidelines in generation prompt:** The system prompt enforces specific stylistic avoidances — no em dashes as dramatic pivots, no parallel triads, no rhetorical questions as closers, no staccato fragments, no "invites us to consider" clichés. These editorial rules are embedded directly in the prompt string in `generate-entry.mjs`.
 
 ## Environment Variables
 

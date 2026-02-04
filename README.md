@@ -2,7 +2,7 @@
 
 Daily wisdom for creative humans in the age of AI — one passage from literature, philosophy, or contemporary thought, paired with a meditative AI-generated reflection. Every morning. No accounts, no ads.
 
-Built with Astro, automated with GitHub Actions + LLM API (currently Kimi K2.5 via OpenRouter), deployed on Netlify.
+Built with Astro, automated with GitHub Actions + LLM API (currently Claude Opus 4.5 via Anthropic), deployed on Netlify.
 
 ---
 
@@ -42,7 +42,7 @@ No database. No server. Just Git + APIs + static hosting.
 | Content             | Markdown files with Zod-validated frontmatter | Free |
 | Hosting             | Netlify                         | Free          |
 | Automation          | GitHub Actions                  | Free          |
-| Content generation  | Kimi K2.5 via [OpenRouter](https://openrouter.ai/moonshotai/kimi-k2.5) | ~$1–3/month |
+| Content generation  | Claude Opus 4.5 via [Anthropic](https://console.anthropic.com) | ~$5–15/month |
 | Email newsletter    | Buttondown (RSS-to-email)       | Free ≤100 subscribers |
 
 ### Project structure
@@ -54,7 +54,7 @@ human-element/
 ├── public/
 │   └── favicon.svg
 ├── scripts/
-│   ├── generate-entry.mjs      # Generation script (OpenRouter / Kimi K2.5)
+│   ├── generate-entry.mjs      # Generation script (Claude Opus 4.5 via Anthropic)
 │   ├── publish-entries.mjs     # Publishes draft entries whose date has arrived
 │   └── sources.json            # Curated author/theme reference
 ├── src/
@@ -114,7 +114,7 @@ npm install
 npm run dev              # Start dev server (http://localhost:4321)
 npm run build            # Build static site to dist/
 npm run preview          # Preview the built site locally
-npm run generate         # Generate next entry as draft (requires OPENROUTER_API_KEY)
+npm run generate         # Generate next entry as draft (requires ANTHROPIC_API_KEY)
 npm run generate -- --count 3  # Generate multiple upcoming entries
 npm run publish:entries  # Publish draft entries whose date has arrived
 ```
@@ -122,7 +122,7 @@ npm run publish:entries  # Publish draft entries whose date has arrived
 ### Generating entries locally
 
 ```bash
-export OPENROUTER_API_KEY=sk-or-...
+export ANTHROPIC_API_KEY=sk-ant-...
 npm run generate              # Generate one entry
 npm run generate -- --count 5 # Generate five entries
 ```
@@ -168,8 +168,8 @@ git push -u origin main
 
 1. Go to your GitHub repo → Settings → Secrets and variables → Actions
 2. Add a new repository secret:
-   - Name: `OPENROUTER_API_KEY`
-   - Value: your OpenRouter API key (get one at [openrouter.ai/keys](https://openrouter.ai/keys))
+   - Name: `ANTHROPIC_API_KEY`
+   - Value: your Anthropic API key (get one at [console.anthropic.com](https://console.anthropic.com))
 3. The workflow runs automatically at midnight UTC. To test it immediately:
    - Go to Actions → "Generate Daily Entry" → "Run workflow" → click the green button
 
@@ -218,35 +218,35 @@ The curated reference list in `scripts/sources.json` guides variety but doesn't 
 
 The system prompt is defined inline in `scripts/generate-entry.mjs`. Key knobs to adjust:
 
-- `temperature: 0.9` — Controls creative variety (higher = more varied selections)
+- `temperature: 1` — Controls creative variety (higher = more varied selections)
 - The avoidance rules (recent authors/themes) are built dynamically from the last 14 entries
 - The tag vocabulary in `sources.json` can be expanded
 - Commentary length, tone, and structure guidelines are in the system prompt
 
 ## Switching LLM providers
 
-The generation script currently uses **Kimi K2.5** via OpenRouter. The previous Claude (Anthropic) code is commented out in `scripts/generate-entry.mjs` and `.github/workflows/generate-daily.yml` so you can switch back easily.
+The generation script currently uses **Claude Opus 4.5** via the Anthropic SDK. OpenRouter/Kimi K2.5 code is commented out in `scripts/generate-entry.mjs` and `.github/workflows/generate-daily.yml` so you can switch easily.
 
-### Switching back to Claude (Anthropic)
+### Switching to OpenRouter (Kimi K2.5 or other models)
 
 In `scripts/generate-entry.mjs`:
 
-1. **Imports** — Uncomment the Anthropic import, comment out the OpenAI import:
+1. **Imports** — Comment out the Anthropic import, uncomment the OpenAI import:
    ```js
-   import Anthropic from '@anthropic-ai/sdk';
-   // import OpenAI from 'openai';
+   // import Anthropic from '@anthropic-ai/sdk';
+   import OpenAI from 'openai';
    ```
 
-2. **Client** — Uncomment the Anthropic client, comment out the OpenRouter client:
+2. **Client** — Comment out the Anthropic client, uncomment the OpenRouter client:
    ```js
-   const client = new Anthropic();
-   // const client = new OpenAI({ ... });
+   // const client = new Anthropic();
+   const client = new OpenAI({ ... });
    ```
 
-3. **API call** — Uncomment the Claude `client.messages.create(...)` block and its `output` line, comment out the OpenRouter `client.chat.completions.create(...)` block and its `output` line. The key differences:
-   - Claude uses `client.messages.create()` with a separate `system` parameter
+3. **API call** — Comment out the Claude `client.messages.stream(...)` block, uncomment the OpenRouter `client.chat.completions.create(...)` block. The key differences:
+   - Claude uses `client.messages.stream()` with a separate `system` parameter
    - OpenRouter uses `client.chat.completions.create()` with `system` as a message role
-   - Claude response: `message.content[0].text`
+   - Claude response: `message.content.find(b => b.type === 'text').text`
    - OpenRouter response: `message.choices[0].message.content`
 
 In `.github/workflows/generate-daily.yml`:
@@ -254,18 +254,18 @@ In `.github/workflows/generate-daily.yml`:
 4. Swap the env var:
    ```yaml
    env:
-     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-     # OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+     # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+     OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
    ```
 
-5. Make sure `ANTHROPIC_API_KEY` is set as a GitHub Actions secret (and locally via `export ANTHROPIC_API_KEY=sk-ant-...`).
+5. Make sure `OPENROUTER_API_KEY` is set as a GitHub Actions secret (and locally via `export OPENROUTER_API_KEY=sk-or-...`).
 
-### Using a different model on OpenRouter
+### Using different models on OpenRouter
 
-To try another model without changing any plumbing, just swap the model ID in the API call:
+To try another model, swap the model ID in the API call:
 
 ```js
-model: 'moonshotai/kimi-k2.5',          // current
+model: 'moonshotai/kimi-k2.5',          // Kimi K2.5
 model: 'anthropic/claude-sonnet-4',      // Claude Sonnet via OpenRouter
 model: 'google/gemini-2.5-pro-preview',  // Gemini via OpenRouter
 model: 'openai/gpt-4o',                  // GPT-4o via OpenRouter
