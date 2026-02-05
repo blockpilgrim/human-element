@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-04T10:13:10.797Z",
+  "lastUpdated": "2026-02-05T02:02:15.017Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -199,6 +199,15 @@
       "passageHash": "ced504cc613caa09a2769bfafea66cb874cbebd286b6a52d1fd09668029fd415",
       "passagePreview": "There was never a sound beside the wood but one, And that was my long scythe whi...",
       "entryDate": "2026-02-06"
+    },
+    {
+      "id": "henry-david-thoreau-walden-1854-1245eed1",
+      "author": "Henry David Thoreau",
+      "source": "Walden",
+      "sourceYear": "1854",
+      "passageHash": "1245eed154820257f1bef9a1095d9c1d5a35360802bf19ffedfcf9022240745d",
+      "passagePreview": "There is some of the same fitness in a man's building his own house that there i...",
+      "entryDate": "2026-02-07"
     }
   ]
 }
