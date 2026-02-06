@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-05T02:02:15.017Z",
+  "lastUpdated": "2026-02-06T02:02:12.159Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -208,6 +208,15 @@
       "passageHash": "1245eed154820257f1bef9a1095d9c1d5a35360802bf19ffedfcf9022240745d",
       "passagePreview": "There is some of the same fitness in a man's building his own house that there i...",
       "entryDate": "2026-02-07"
+    },
+    {
+      "id": "willa-cather-the-novel-dmeubl-1922-67882ee2",
+      "author": "Willa Cather",
+      "source": "The Novel Démeublé",
+      "sourceYear": "1922",
+      "passageHash": "67882ee2814494133657f846c70e1ed64253547acbff4f6b51f9c0900c6be5ac",
+      "passagePreview": "Whatever is felt upon the page without being specifically named there—that, it s...",
+      "entryDate": "2026-02-08"
     }
   ]
 }
