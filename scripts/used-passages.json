@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-07T01:56:32.142Z",
+  "lastUpdated": "2026-02-08T02:30:45.002Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -226,6 +226,15 @@
       "passageHash": "d50816ddc1a0f63f2f61329d52883a403cb3ce939b611b29204982ec1246173a",
       "passagePreview": "There is a time in every man's education when he arrives at the conviction that ...",
       "entryDate": "2026-02-09"
+    },
+    {
+      "id": "william-james-the-principles-of-psychology-1890-57b7c32c",
+      "author": "William James",
+      "source": "The Principles of Psychology",
+      "sourceYear": "1890",
+      "passageHash": "57b7c32cecd5885e6b9b86419530d71d497bf0f5375adc7050a6e8893022f36f",
+      "passagePreview": "Millions of items of the outward order are present to my senses which never prop...",
+      "entryDate": "2026-02-10"
     }
   ]
 }
