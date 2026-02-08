@@ -395,6 +395,46 @@ a:hover {
   line-height: 1;
 }
 
+/* Ornament Unfurl — progressive enhancement via JS */
+.section-ornament[data-unfurl] {
+  opacity: 0;
+  letter-spacing: 0.1em;
+  transition: opacity 1s ease, letter-spacing 1.2s cubic-bezier(0.25, 0, 0.15, 1);
+}
+
+.section-ornament[data-unfurl].revealed {
+  opacity: 1;
+  letter-spacing: 0.5em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-ornament[data-unfurl] {
+    opacity: 1;
+    letter-spacing: 0.5em;
+    transition: none;
+  }
+}
+
+/* Gentle Revelation — commentary paragraphs fade up on scroll */
+.entry-commentary > p[data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.entry-commentary > p[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-commentary > p[data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* === Entry: Commentary === */
 .entry-commentary {
   margin-bottom: var(--space-8);
@@ -891,3 +931,4 @@ a:hover {
   line-height: var(--line-height-heading);
   margin-bottom: var(--space-6);
 }
+

@@ -58,3 +58,43 @@ const isLongPassage = passageWordCount > 150;
 
   <TagList tags={data.tags} />
 </article>
+
+<script>
+document.addEventListener('astro:page-load', () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const ornament = document.querySelector('.section-ornament');
+  const paragraphs = document.querySelectorAll('.entry-commentary > p');
+  if (!ornament && paragraphs.length === 0) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  // Ornament unfurl — skip if already in viewport
+  if (ornament) {
+    const rect = ornament.getBoundingClientRect();
+    if (rect.top >= window.innerHeight) {
+      ornament.setAttribute('data-unfurl', '');
+      observer.observe(ornament);
+    }
+  }
+
+  // Commentary paragraphs — skip those already in viewport
+  paragraphs.forEach((p) => {
+    const rect = p.getBoundingClientRect();
+    if (rect.top >= window.innerHeight) {
+      p.setAttribute('data-reveal', '');
+      observer.observe(p);
+    }
+  });
+});
+</script>
