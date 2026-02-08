@@ -44,7 +44,9 @@ No lint or test commands exist in this project. Requires Node.js 22+.
 
 **Generation output validation:** The script validates LLM output before writing: checks YAML frontmatter delimiters, required fields (title, date, passage, author, source, tags), and minimum body length (>100 chars). Failures log errors but don't halt batch runs.
 
-**`scripts/sources.json`:** Defines 12 thematic categories, ~60 suggested authors, and the controlled tag vocabulary (~40 tags). Tags in entry frontmatter must come from this vocabulary. The generation prompt weaves these into author suggestions and thematic guidance.
+**Passage deduplication:** `scripts/used-passages.json` tracks all previously used passages via SHA-256 hashes. The generation script checks this registry to prevent exact passage reuse across the entire archive. This file is committed alongside entries by the GitHub Actions workflow.
+
+**`scripts/sources.json`:** Defines 16 thematic categories, ~110 suggested authors, and the controlled tag vocabulary (~50 tags). Tags in entry frontmatter must come from this vocabulary. The generation prompt weaves these into author suggestions and thematic guidance.
 
 ## Routing
 
@@ -69,7 +71,7 @@ Single global stylesheet at `src/styles/global.css` using vanilla CSS with custo
 
 ## Key Patterns
 
-- **Zero client JS by default.** Only `RandomButton.astro` uses an inline script. Everything else is static HTML/CSS.
+- **Minimal client JS.** `RandomButton.astro` uses an inline script for random entry selection, and `EntryCard.astro` uses IntersectionObserver-based scroll animations (ornament unfurling, commentary paragraph reveals) that respect `prefers-reduced-motion`. Everything else is static HTML/CSS.
 - **View transitions** via Astro's `ClientRouter` with fade animations on the main content area.
 - **Adaptive passage styling:** `EntryCard.astro` applies `entry-passage--long` class for passages over 150 words.
 - **RSS feed** in `rss.xml.ts` renders full markdown to HTML via `markdown-it` and sanitizes with `sanitize-html`.

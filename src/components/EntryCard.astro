@@ -60,19 +60,27 @@ const isLongPassage = passageWordCount > 150;
 </article>
 
 <script>
+let observer: IntersectionObserver | null = null;
+
 document.addEventListener('astro:page-load', () => {
+  // Clean up previous observer (e.g. navigated away before scrolling through all elements)
+  if (observer) {
+    observer.disconnect();
+    observer = null;
+  }
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const ornament = document.querySelector('.section-ornament');
   const paragraphs = document.querySelectorAll('.entry-commentary > p');
   if (!ornament && paragraphs.length === 0) return;
 
-  const observer = new IntersectionObserver(
+  observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
+          observer!.unobserve(entry.target);
         }
       });
     },
@@ -93,7 +101,7 @@ document.addEventListener('astro:page-load', () => {
     const rect = p.getBoundingClientRect();
     if (rect.top >= window.innerHeight) {
       p.setAttribute('data-reveal', '');
-      observer.observe(p);
+      observer!.observe(p);
     }
   });
 });
