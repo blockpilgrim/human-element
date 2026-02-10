@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-09T02:08:45.841Z",
+  "lastUpdated": "2026-02-10T02:25:36.852Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -244,6 +244,15 @@
       "passageHash": "681ea403432f6fffe0e78fc5bc94c6625cbdcef5c20653d59c007db900b67424",
       "passagePreview": "Glory be to God for dappled things—   For skies of couple-colour as a brinded co...",
       "entryDate": "2026-02-11"
+    },
+    {
+      "id": "percy-bysshe-shelley-a-defence-of-poetry-1840-0fb57c5f",
+      "author": "Percy Bysshe Shelley",
+      "source": "A Defence of Poetry",
+      "sourceYear": "1840",
+      "passageHash": "0fb57c5f6fe1c8f83486afff268b4c84013ed322cc11b4e5ac660efdd6312ad0",
+      "passagePreview": "Poetry is not like reasoning, a power to be exerted according to the determinati...",
+      "entryDate": "2026-02-12"
     }
   ]
 }
