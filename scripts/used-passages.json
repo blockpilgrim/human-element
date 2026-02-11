@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-10T02:25:36.852Z",
+  "lastUpdated": "2026-02-11T02:14:30.088Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -253,6 +253,15 @@
       "passageHash": "0fb57c5f6fe1c8f83486afff268b4c84013ed322cc11b4e5ac660efdd6312ad0",
       "passagePreview": "Poetry is not like reasoning, a power to be exerted according to the determinati...",
       "entryDate": "2026-02-12"
+    },
+    {
+      "id": "walt-whitman-preface-to-leaves-of-grass-1855-5b7992f3",
+      "author": "Walt Whitman",
+      "source": "Preface to Leaves of Grass",
+      "sourceYear": "1855",
+      "passageHash": "5b7992f3cf0df96641592cbd18d47a2b5c7f1bd9f7680c927ae120bd687e5378",
+      "passagePreview": "The greatest poet has less a marked style and is more the channel of thoughts an...",
+      "entryDate": "2026-02-13"
     }
   ]
 }
