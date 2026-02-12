@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-11T02:14:30.088Z",
+  "lastUpdated": "2026-02-12T02:08:18.602Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -262,6 +262,15 @@
       "passageHash": "5b7992f3cf0df96641592cbd18d47a2b5c7f1bd9f7680c927ae120bd687e5378",
       "passagePreview": "The greatest poet has less a marked style and is more the channel of thoughts an...",
       "entryDate": "2026-02-13"
+    },
+    {
+      "id": "martha-graham-conversation-with-agnes-de-mille-c-1-5ab0a7c8",
+      "author": "Martha Graham",
+      "source": "Conversation with Agnes de Mille",
+      "sourceYear": "c. 1943",
+      "passageHash": "5ab0a7c8c5e5e92a9c744079f734b7a07b1e307da74cd14105f23a4b742ebf6a",
+      "passagePreview": "There is a vitality, a life force, a quickening that is translated through you i...",
+      "entryDate": "2026-02-14"
     }
   ]
 }
