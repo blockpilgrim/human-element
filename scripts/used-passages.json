@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-13T02:10:59.312Z",
+  "lastUpdated": "2026-02-14T01:58:50.671Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -280,6 +280,15 @@
       "passageHash": "d162d60b35e58d3d61c0ae6b548230c6124b68a1538e32645a495f0eb634e0d2",
       "passagePreview": "A work that aspires, however humbly, to the condition of art should carry its ju...",
       "entryDate": "2026-02-15"
+    },
+    {
+      "id": "rabindranath-tagore-gitanjali-1912-1a34034a",
+      "author": "Rabindranath Tagore",
+      "source": "Gitanjali",
+      "sourceYear": "1912",
+      "passageHash": "1a34034a8aa862eeedb622208768a487de9485abfc73b9147b0c0bc9f27f3c7f",
+      "passagePreview": "The song that I came to sing remains unsung to this day. I have spent my days in...",
+      "entryDate": "2026-02-16"
     }
   ]
 }
