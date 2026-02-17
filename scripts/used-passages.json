@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-15T02:10:17.993Z",
+  "lastUpdated": "2026-02-17T02:03:45.366Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -298,6 +298,15 @@
       "passageHash": "4fe45ca46cef4ff4c531e203e77f512d44de4c24ea02475036cfa15232303b9d",
       "passagePreview": "From the age of six I had a mania for drawing the shapes of things. When I was f...",
       "entryDate": "2026-02-17"
+    },
+    {
+      "id": "wassily-kandinsky-concerning-the-spiritual-in-art--3e0959b3",
+      "author": "Wassily Kandinsky",
+      "source": "Concerning the Spiritual in Art",
+      "sourceYear": "1911",
+      "passageHash": "3e0959b39aa62597d3132df32b6bd9411b42ffeb7b1353c753466f1077da9776",
+      "passagePreview": "The artist must be blind to distinctions between \"recognized\" or \"unrecognized\" ...",
+      "entryDate": "2026-02-18"
     }
   ]
 }
