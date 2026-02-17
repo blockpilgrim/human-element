@@ -1,8 +1,4 @@
-// --- Claude / Anthropic SDK ---
 import Anthropic from '@anthropic-ai/sdk';
-
-// --- OpenRouter via OpenAI-compatible SDK (commented out for now) ---
-// import OpenAI from "openai";
 
 import { createHash } from 'crypto';
 import {
@@ -104,14 +100,7 @@ for (let i = 0; i < COUNT; i++) {
   // 4. Call LLM API
   // ---------------------------------------------------------------------------
 
-  // --- Claude / Anthropic client ---
   const client = new Anthropic();
-
-  // --- OpenRouter client (Kimi K2.5) (commented out for now) ---
-  // const client = new OpenAI({
-  //   baseURL: "https://openrouter.ai/api/v1",
-  //   apiKey: process.env.OPENROUTER_API_KEY,
-  // });
 
   const systemPrompt = `You are the editor of "The Human Element," a daily blog offering wisdom for creative humans navigating the age of AI. Your task is to select a passage and write a meditative commentary.
 
@@ -239,10 +228,8 @@ IMPORTANT notes on the frontmatter:
 - Set "excerpt: true" ONLY when the passage is a copyrighted excerpt (not the full text). Set "excerpt: false" for public domain works where you included the full text.
 - Include "passageLink" ONLY when excerpt is true AND you can identify a legitimate URL for the full text. Omit the passageLink line entirely if excerpt is false or if you cannot confidently identify a URL.`;
 
-  // --- Claude API call ---
   console.log("Calling Claude Opus 4.5...");
   const stream = client.messages.stream({
-    // model: 'claude-sonnet-4-5-20250929',
     model: 'claude-opus-4-5-20251101',
     max_tokens: 40000,
     temperature: 1,
@@ -263,47 +250,6 @@ IMPORTANT notes on the frontmatter:
   const textBlock = message.content.find(b => b.type === 'text');
   let output = textBlock.text.trim();
   console.log(`Raw output length: ${output.length} chars`);
-
-  // --- OpenRouter / Kimi K2.5 API call (commented out for now) ---
-  // console.log(
-  //   "Calling Kimi K2.5 via OpenRouter (thinking models can take a minute or two)...",
-  // );
-  // const message = await client.chat.completions.create(
-  //   {
-  //     model: "moonshotai/kimi-k2.5",
-  //     max_tokens: 16000, // Kimi's thinking tokens count against this limit, so leave plenty of room
-  //     temperature: 0.9,
-  //     messages: [
-  //       { role: "system", content: systemPrompt },
-  //       {
-  //         role: "user",
-  //         content: `Generate an entry for The Human Element for ${targetDate}. Select a passage that illuminates questions about creativity, craft, or making—and write a meditative commentary that connects it to the experience of being a creative human in the age of AI.`,
-  //       },
-  //     ],
-  //   },
-  //   { timeout: 180_000 },
-  // ); // 3 minute timeout
-  // console.log("Response received.");
-  //
-  // if (!message.choices?.length || !message.choices[0].message?.content) {
-  //   console.error("ERROR: Empty or malformed response from OpenRouter");
-  //   console.error(JSON.stringify(message, null, 2));
-  //   process.exit(1);
-  // }
-  //
-  // let output = message.choices[0].message.content.trim();
-  // console.log(`Raw output length: ${output.length} chars`);
-  //
-  // // Strip thinking/reasoning that some models (e.g. Kimi K2.5) include in the response.
-  // // The model wraps chain-of-thought in <think>...</think> tags, which can contain
-  // // draft frontmatter blocks. Strip everything up to and including </think> first.
-  // const thinkClose = output.lastIndexOf("</think>");
-  // if (thinkClose !== -1) {
-  //   console.log(
-  //     `Stripped </think> block (${thinkClose + 8} chars of reasoning)`,
-  //   );
-  //   output = output.substring(thinkClose + 8).trim();
-  // }
 
   // Strip code fences that models sometimes wrap around structured output.
   output = output.replace(/^```\w*\n/, "").replace(/\n```\s*$/, "");

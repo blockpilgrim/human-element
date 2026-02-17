@@ -20,5 +20,12 @@ pnpm-debug.log*
 
 # editor
 .vscode/
+.idea/
 *.swp
 *.swo
+
+# ai tooling
+CLAUDE.md
+.claude/
+.cursorrules
+.cursor/
