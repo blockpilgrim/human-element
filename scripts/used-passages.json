@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-18T02:08:13.518Z",
+  "lastUpdated": "2026-02-19T02:05:29.953Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -316,6 +316,15 @@
       "passageHash": "a1b293d0b45de280c21244953f46b4bd002290a0c4fbe856124d2ba1c84eeae3",
       "passagePreview": "The poem of the mind in the act of finding What will suffice. It has not always ...",
       "entryDate": "2026-02-19"
+    },
+    {
+      "id": "mc-richards-centering-in-pottery-poetry-and-the-pe-6f734780",
+      "author": "M.C. Richards",
+      "source": "Centering in Pottery, Poetry, and the Person",
+      "sourceYear": "1964",
+      "passageHash": "6f734780714b73e691a61f8891bc81e0f56081a3cd42295997592b6ee8ec0e1a",
+      "passagePreview": "Centering: that act which precedes all others on the potter's wheel. The bringin...",
+      "entryDate": "2026-02-20"
     }
   ]
 }
