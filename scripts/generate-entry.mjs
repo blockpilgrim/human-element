@@ -228,9 +228,9 @@ IMPORTANT notes on the frontmatter:
 - Set "excerpt: true" ONLY when the passage is a copyrighted excerpt (not the full text). Set "excerpt: false" for public domain works where you included the full text.
 - Include "passageLink" ONLY when excerpt is true AND you can identify a legitimate URL for the full text. Omit the passageLink line entirely if excerpt is false or if you cannot confidently identify a URL.`;
 
-  console.log("Calling Claude Opus 4.5...");
+  console.log("Calling Claude Opus 4.6...");
   const stream = client.messages.stream({
-    model: 'claude-opus-4-5-20251101',
+    model: 'claude-opus-4-6',
     max_tokens: 40000,
     temperature: 1,
     thinking: {
