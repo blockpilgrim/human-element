@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-02-19T02:05:29.953Z",
+  "lastUpdated": "2026-03-01T02:13:27.750Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -325,6 +325,15 @@
       "passageHash": "6f734780714b73e691a61f8891bc81e0f56081a3cd42295997592b6ee8ec0e1a",
       "passagePreview": "Centering: that act which precedes all others on the potter's wheel. The bringin...",
       "entryDate": "2026-02-20"
+    },
+    {
+      "id": "leonardo-da-vinci-a-treatise-on-painting-trattato--fbcb9c89",
+      "author": "Leonardo da Vinci",
+      "source": "A Treatise on Painting (Trattato della pittura)",
+      "sourceYear": "c. 1500",
+      "passageHash": "fbcb9c895d8ed841790978a36ead2b0bee6f27fc9ef903a07057301e61e85fd7",
+      "passagePreview": "I cannot forbear to mention among these precepts a new device for study which, a...",
+      "entryDate": "2026-02-21"
     }
   ]
 }
