@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-03-01T02:13:27.750Z",
+  "lastUpdated": "2026-03-06T02:01:59.373Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -334,6 +334,15 @@
       "passageHash": "fbcb9c895d8ed841790978a36ead2b0bee6f27fc9ef903a07057301e61e85fd7",
       "passagePreview": "I cannot forbear to mention among these precepts a new device for study which, a...",
       "entryDate": "2026-02-21"
+    },
+    {
+      "id": "william-morris-useful-work-versus-useless-toil-188-548ac15f",
+      "author": "William Morris",
+      "source": "Useful Work versus Useless Toil",
+      "sourceYear": "1884",
+      "passageHash": "548ac15f05b2cb95ca250c37b4a1f670233a8ddad8a888cea573a3cbee477db4",
+      "passagePreview": "The hope of pleasure in the work itself: how strange that hope must seem to some...",
+      "entryDate": "2026-02-22"
     }
   ]
 }
