@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-03-06T02:01:59.373Z",
+  "lastUpdated": "2026-03-07T01:54:51.633Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -343,6 +343,15 @@
       "passageHash": "548ac15f05b2cb95ca250c37b4a1f670233a8ddad8a888cea573a3cbee477db4",
       "passagePreview": "The hope of pleasure in the work itself: how strange that hope must seem to some...",
       "entryDate": "2026-02-22"
+    },
+    {
+      "id": "david-hume-of-the-standard-of-taste-1757-e93a8ef0",
+      "author": "David Hume",
+      "source": "Of the Standard of Taste",
+      "sourceYear": "1757",
+      "passageHash": "e93a8ef03386b6ce9b9a827fa567668d10908045b40daeb8be846f0ef0c4b462",
+      "passagePreview": "It is with good reason, says Sancho to the squire with the great nose, that I pr...",
+      "entryDate": "2026-02-23"
     }
   ]
 }
