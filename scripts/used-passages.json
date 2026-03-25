@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-03-22T02:52:46.586Z",
+  "lastUpdated": "2026-03-25T02:49:11.039Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -415,6 +415,15 @@
       "passageHash": "28a47234bc62d300af0b05bcd0203d1fef01903b7910315da6317edea834dce4",
       "passagePreview": "Even the most perfect reproduction of a work of art is lacking in one element: i...",
       "entryDate": "2026-03-02"
+    },
+    {
+      "id": "simone-weil-reflections-on-the-right-use-of-school-0f8b817b",
+      "author": "Simone Weil",
+      "source": "Reflections on the Right Use of School Studies with a View to the Love of God (Waiting for God, trans. Emma Craufurd)",
+      "sourceYear": "1951",
+      "passageHash": "0f8b817bc44e1519b481aed132464fecb4e1dde8b86877adde4d1f84bd57848b",
+      "passagePreview": "If we concentrate our attention on trying to solve a problem of geometry, and if...",
+      "entryDate": "2026-03-03"
     }
   ]
 }
