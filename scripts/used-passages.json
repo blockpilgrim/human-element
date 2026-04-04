@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-01T03:29:19.022Z",
+  "lastUpdated": "2026-04-04T02:47:18.353Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -442,6 +442,15 @@
       "passageHash": "e4017108477dfdb63188af2e8e7b34402390008da7ef1b3caa55b68999b9b35f",
       "passagePreview": "One of the few things I know about writing is this: spend it all, shoot it, play...",
       "entryDate": "2026-03-05"
+    },
+    {
+      "id": "okakura-kakuz-the-book-of-tea-1906-2ce33b59",
+      "author": "Okakura Kakuzō",
+      "source": "The Book of Tea",
+      "sourceYear": "1906",
+      "passageHash": "2ce33b59bb038345ccd6262ad05da5f5468ffba169fa40d14b5474dfe5257f32",
+      "passagePreview": "The dynamic nature of their philosophy laid more stress upon the process through...",
+      "entryDate": "2026-03-06"
     }
   ]
 }
