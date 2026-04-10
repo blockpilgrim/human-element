@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-07T02:59:46.416Z",
+  "lastUpdated": "2026-04-10T03:28:01.428Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -460,6 +460,15 @@
       "passageHash": "d8dc615befe1470b118e94e09f035e91bd3733bb0017c8b9615609312c0bdc97",
       "passagePreview": "All art is concerned with coming into being, i.e. with contriving and considerin...",
       "entryDate": "2026-03-07"
+    },
+    {
+      "id": "samuel-taylor-coleridge-biographia-literaria-chapt-b3973ce7",
+      "author": "Samuel Taylor Coleridge",
+      "source": "Biographia Literaria, Chapter XIII",
+      "sourceYear": "1817",
+      "passageHash": "b3973ce771a7549be203a05d23b9b1ec964a3220941ff6f7f17d45ace3e32da4",
+      "passagePreview": "The primary IMAGINATION I hold to be the living Power and prime Agent of all hum...",
+      "entryDate": "2026-03-08"
     }
   ]
 }
