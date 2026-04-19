@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-16T03:33:27.069Z",
+  "lastUpdated": "2026-04-19T03:35:10.565Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -487,6 +487,15 @@
       "passageHash": "30ff5bb07db52a619f740ac1723da5b2de1941c25498c02a8758b1b021c92981",
       "passagePreview": "In the creative act, the artist goes from intention to realization through a cha...",
       "entryDate": "2026-03-10"
+    },
+    {
+      "id": "igor-stravinsky-poetics-of-music-in-the-form-of-si-2c825af3",
+      "author": "Igor Stravinsky",
+      "source": "Poetics of Music in the Form of Six Lessons (trans. Arthur Knodel and Ingolf Dahl)",
+      "sourceYear": "1942",
+      "passageHash": "2c825af3cbb6b83e050e157380dc07cb92fe6dfe9cc39c72b439816bee2e37b9",
+      "passagePreview": "I experience a sort of terror when, at the moment of setting to work and finding...",
+      "entryDate": "2026-03-11"
     }
   ]
 }
