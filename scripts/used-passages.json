@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-22T03:27:16.756Z",
+  "lastUpdated": "2026-04-25T03:18:25.609Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -505,6 +505,15 @@
       "passageHash": "4ad12c831d2eb65542e4d82c50c3088f9d08f742d850864aec94ec54505cf47a",
       "passagePreview": "If I am not mistaken, the heterogeneous pieces I have enumerated resemble Kafka;...",
       "entryDate": "2026-03-12"
+    },
+    {
+      "id": "toni-morrison-the-site-of-memory-in-inventing-the--22216f9f",
+      "author": "Toni Morrison",
+      "source": "The Site of Memory (in Inventing the Truth: The Art and Craft of Memoir, ed. William Zinsser)",
+      "sourceYear": "1987",
+      "passageHash": "22216f9fc552ff9e1cfb8c10049a7d115e56642ae4ff2f0201be20a60561abc5",
+      "passagePreview": "You know, they straightened out the Mississippi River in places, to make room fo...",
+      "entryDate": "2026-03-13"
     }
   ]
 }
