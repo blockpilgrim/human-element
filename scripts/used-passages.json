@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-25T03:18:25.609Z",
+  "lastUpdated": "2026-04-28T03:52:14.201Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -514,6 +514,15 @@
       "passageHash": "22216f9fc552ff9e1cfb8c10049a7d115e56642ae4ff2f0201be20a60561abc5",
       "passagePreview": "You know, they straightened out the Mississippi River in places, to make room fo...",
       "entryDate": "2026-03-13"
+    },
+    {
+      "id": "friedrich-schiller-letters-upon-the-aesthetic-educ-b69aa68c",
+      "author": "Friedrich Schiller",
+      "source": "Letters Upon the Aesthetic Education of Man, Letter XV",
+      "sourceYear": "1795",
+      "passageHash": "b69aa68cf27a2426110b12151edae4d05ab2ba77f38140d2822ab54f856cdfb3",
+      "passagePreview": "With beauty man shall only play, and it is with beauty only that he shall play. ...",
+      "entryDate": "2026-03-14"
     }
   ]
 }
