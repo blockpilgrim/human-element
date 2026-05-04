@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-05-01T04:01:51.818Z",
+  "lastUpdated": "2026-05-04T03:53:54.555Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -532,6 +532,15 @@
       "passageHash": "ea568c8a854761db3ded0cd324072ce8cda5e0764681908b82f8712714e17341",
       "passagePreview": "When we see a natural style we are quite amazed and delighted, because we expect...",
       "entryDate": "2026-03-15"
+    },
+    {
+      "id": "seamus-heaney-feeling-into-words-preoccupations-se-f50fbb6d",
+      "author": "Seamus Heaney",
+      "source": "Feeling into Words (Preoccupations: Selected Prose 1968–1978)",
+      "sourceYear": "1980",
+      "passageHash": "f50fbb6d56f39651b853f53ff5699d24f899147e56f65e8b816e42fc04a92c77",
+      "passagePreview": "I think technique is different from craft. Craft is what you can learn from othe...",
+      "entryDate": "2026-03-16"
     }
   ]
 }
