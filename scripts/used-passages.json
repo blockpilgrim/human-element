@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-05-04T03:53:54.555Z",
+  "lastUpdated": "2026-05-07T03:47:55.988Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -541,6 +541,15 @@
       "passageHash": "f50fbb6d56f39651b853f53ff5699d24f899147e56f65e8b816e42fc04a92c77",
       "passagePreview": "I think technique is different from craft. Craft is what you can learn from othe...",
       "entryDate": "2026-03-16"
+    },
+    {
+      "id": "herman-melville-letter-to-nathaniel-hawthorne-june-f8821645",
+      "author": "Herman Melville",
+      "source": "Letter to Nathaniel Hawthorne, June 1851",
+      "sourceYear": "1851",
+      "passageHash": "f8821645e29ba9a1925b4de7ce6774c959d9945046a5b3f108427ebb31f5d8b6",
+      "passagePreview": "In a week or so, I go to New York, to bury myself in a third-story room, and wor...",
+      "entryDate": "2026-03-17"
     }
   ]
 }
