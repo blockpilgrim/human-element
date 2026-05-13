@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-05-07T03:47:55.988Z",
+  "lastUpdated": "2026-05-13T04:00:39.510Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -550,6 +550,15 @@
       "passageHash": "f8821645e29ba9a1925b4de7ce6774c959d9945046a5b3f108427ebb31f5d8b6",
       "passagePreview": "In a week or so, I go to New York, to bury myself in a third-story room, and wor...",
       "entryDate": "2026-03-17"
+    },
+    {
+      "id": "iris-murdoch-the-sovereignty-of-good-1970-1aa04559",
+      "author": "Iris Murdoch",
+      "source": "The Sovereignty of Good",
+      "sourceYear": "1970",
+      "passageHash": "1aa04559a9544e2f1a4623421dfcaf3135e9f366c09d61afd067499db47091da",
+      "passagePreview": "I am looking out of my window in an anxious and resentful state of mind, oblivio...",
+      "entryDate": "2026-03-18"
     }
   ]
 }
