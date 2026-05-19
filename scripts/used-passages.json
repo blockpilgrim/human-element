@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-05-16T03:46:30.831Z",
+  "lastUpdated": "2026-05-19T04:13:47.549Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -568,6 +568,15 @@
       "passageHash": "ef0564ae85fa3a1f67ca7260a72f052e7e3fb09396b596d85d2a524b76528787",
       "passagePreview": "Every poem is rooted in imaginative awe. Poetry can do a hundred and one things,...",
       "entryDate": "2026-03-19"
+    },
+    {
+      "id": "robert-graves-poems-19141927-1927-3a0bf1f0",
+      "author": "Robert Graves",
+      "source": "Poems (1914–1927)",
+      "sourceYear": "1927",
+      "passageHash": "3a0bf1f00d9cbc432b73fa263c991e99ed35f6a524e1509806758e3b91142339",
+      "passagePreview": "Children are dumb to say how hot the day is, How hot the scald of the high noon,...",
+      "entryDate": "2026-03-20"
     }
   ]
 }
