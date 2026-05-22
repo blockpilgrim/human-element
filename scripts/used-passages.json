@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-05-19T04:13:47.549Z",
+  "lastUpdated": "2026-05-22T04:16:37.433Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -577,6 +577,15 @@
       "passageHash": "3a0bf1f00d9cbc432b73fa263c991e99ed35f6a524e1509806758e3b91142339",
       "passagePreview": "Children are dumb to say how hot the day is, How hot the scald of the high noon,...",
       "entryDate": "2026-03-20"
+    },
+    {
+      "id": "junichir-tanizaki-in-praise-of-shadows-trans-thoma-99593057",
+      "author": "Jun'ichirō Tanizaki",
+      "source": "In Praise of Shadows (trans. Thomas J. Harper and Edward G. Seidensticker)",
+      "sourceYear": "1933",
+      "passageHash": "99593057bae5224780150179728e7defbe3847aaddad6435c0eeb45f67cf1696",
+      "passagePreview": "Lacquerware decorated in gold is not something to be seen in a brilliant light, ...",
+      "entryDate": "2026-03-21"
     }
   ]
 }
