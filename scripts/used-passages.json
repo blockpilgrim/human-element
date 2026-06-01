@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-05-31T04:26:57.491Z",
+  "lastUpdated": "2026-06-01T04:58:51.180Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -613,6 +613,15 @@
       "passageHash": "c14aaef368ee172ac6bf8b3bfdd4b1df62f33a6c0c24b1f8f305750196d3ea61",
       "passagePreview": "Traveler, your footprints are the path, and nothing more; Traveler, there is no ...",
       "entryDate": "2026-03-24"
+    },
+    {
+      "id": "flannery-oconnor-mystery-and-manners-occasional-pr-43358d03",
+      "author": "Flannery O'Connor",
+      "source": "Mystery and Manners: Occasional Prose",
+      "sourceYear": "1969",
+      "passageHash": "43358d03d54a9390350bbf9eaeb04e2c8c895825fee93aeabf607b28ac888291",
+      "passagePreview": "The beginning of human knowledge is through the senses, and the fiction writer b...",
+      "entryDate": "2026-03-25"
     }
   ]
 }
