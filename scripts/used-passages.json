@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-06-01T04:58:51.180Z",
+  "lastUpdated": "2026-06-10T04:21:55.875Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -622,6 +622,15 @@
       "passageHash": "43358d03d54a9390350bbf9eaeb04e2c8c895825fee93aeabf607b28ac888291",
       "passagePreview": "The beginning of human knowledge is through the senses, and the fiction writer b...",
       "entryDate": "2026-03-25"
+    },
+    {
+      "id": "walt-whitman-leaves-of-grass-1891-d1d5924d",
+      "author": "Walt Whitman",
+      "source": "Leaves of Grass",
+      "sourceYear": "1891",
+      "passageHash": "d1d5924ddcd8f6669776b6e32c4007242daa6de4964ee0a685dccf4ccb6ebaff",
+      "passagePreview": "A noiseless patient spider, I mark'd where on a little promontory it stood isola...",
+      "entryDate": "2026-03-26"
     }
   ]
 }
