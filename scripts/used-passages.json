@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-06-10T04:21:55.875Z",
+  "lastUpdated": "2026-06-13T04:24:12.513Z",
   "passages": [
     {
       "id": "matthew-crawford-shop-class-as-soulcraft-2009-bde30e79",
@@ -631,6 +631,15 @@
       "passageHash": "d1d5924ddcd8f6669776b6e32c4007242daa6de4964ee0a685dccf4ccb6ebaff",
       "passagePreview": "A noiseless patient spider, I mark'd where on a little promontory it stood isola...",
       "entryDate": "2026-03-26"
+    },
+    {
+      "id": "joshua-reynolds-discourses-on-art-discourse-vi-177-aa78fa67",
+      "author": "Joshua Reynolds",
+      "source": "Discourses on Art, Discourse VI",
+      "sourceYear": "1774",
+      "passageHash": "aa78fa67cbe4ac97c3b7b5d44638d06a42906a222cf5f95d8e00c6124d4bf89b",
+      "passagePreview": "The mind is but a barren soil; a soil which is soon exhausted, and will produce ...",
+      "entryDate": "2026-03-27"
     }
   ]
 }
